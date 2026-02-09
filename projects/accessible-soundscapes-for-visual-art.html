@@ -29,7 +29,7 @@
             <a class="project-back" href="../research.html">← Back to Research</a>
             <h2>Accessible Soundscapes for Visual Art</h2>
             <div class="project-meta">
-                <span>Role: Lead Researcher/PhD Student</span>
+                <span>Role: Lead Researcher/Honours Student</span>
                 <span>Status: Completed</span>
                 <span>Focus: Accessibility · Generative Soundscapes · Visual Art</span>
             </div>
@@ -40,21 +40,56 @@
 
             <div class="project-section">
                 <h3>Overview</h3>
-                <p>Describe the accessibility goals, target audience, and the core research questions addressed.</p>
+                <p>This project investigates how automatically generated musical soundscapes can enhance access to the <em>aesthetic experience of visual art</em> for people who are blind or have low vision (BLV).
+                    Traditional accessibility tools in museums often focus on factual depiction, but can fail to fully convey the emotional 
+                    and atmospheric qualities that sighted patrons experience naturally. This work may be of particular interest to researchers interested in accessible creativity support tools, designers of multimodal museum
+                    technologies and members of the BLV community who are interested in new ways to experience visual art. The core research questions of this work are:
+                </p>
+                <br>
+                <ol>
+                    <li>How do automatic musical soundscapes affect BLV users’ aesthetic experience of artworks?</li>
+                    <li>What system and interaction design requirements are needed to ensure these soundscapes are meaningful, accurate, and enjoyable?</li>
+                </ol>
             </div>
 
             <div class="project-section">
                 <h3>Approach</h3>
-                <p>Explain the system design, participant study setup, and how soundscapes were generated and evaluated.</p>
+                <h4>System Design</h4>
+                <p>The project began by building a prototype that generates soundscapes from representational paintings in two stages:</p>
+                <p><b>Emotion-Based Music Generation:</b> The system first predicts the painting’s perceived emotion using a deep learning classifier trained on the WikiArt emotions dataset, mapped onto the valence–arousal emotion model.
+                Following this, the system selects an emotionally matching MIDI “primer” from an annotated music database and uses Magenta’s Music Transformer to generate new symbolic music that reflects the artwork’s emotional tone</p>
+                <p><b>Contextual Sound Effects:</b> To convey contextual information beyond emotion, the system also detects foreground objects using YOLOv3, retrieves corresponding sound effects from a custom database
+                and mixes ambient and non-ambient sounds into the musical output. This combination aims to deliver both Mood/atmosphere (music) and Scene-setting and object awareness (sound effects)</p>
+                <figure class="project-figure">
+                    <img src="../images/System Diagram Second Study.png" alt="System diagram illustrating the soundscape generation pipeline">
+                    <figcaption>System diagram of the two-stage soundscape generation pipeline.</figcaption>
+                </figure>
+                <p style="padding-top: 8px;">Although this prototype showed early success, its worth adding that the technologies in this approach are now dated and future work should investigate using modern text-to-music models to
+                    generate more sophisticated soundscapes from richer image descriptions, rather than relying on the two-stage approach of first predicting emotion and then generating music.</p>
+                
+                <h4>Participant Study Setup</h4>
+                <p>The participant study was designed to evaluate the effectiveness of the generated soundscapes in enhancing the aesthetic experience of BLV users and was held in two stages: </p>
+                <p><b>Pilot Study:</b> Contained 33 participants (mostly sighted, 5 low vision) to test the effectiveness of the system in generating soundscapes. Results were generally positive with
+                participants reporting emotional accuracy 60% of the time and accurate foreground sound effects 92% of the time. These results motivated the use of the system in an in-depth study with BLV users.</p>
+                <p><b>In-Depth Qualitative Study:</b> Conducted with 10 BLV users (5 blind, 5 low vision) to gain deeper insights into the user experience and the impact of the soundscapes on their aesthetic appreciation of the artwork. Participants
+                took part in semi-structured interviews after interacting with system and discussed the system's emotional impact, usefulness of contextual sounds and preferences for combining soundscapes with traditional accessibility methods.
+                Importantly, the evaluation was not focused on benchmarking the system's performance, but rather explored the subjective experiences of participants to uncover design insights for future implementations.</p>
             </div>
 
             <div class="project-section">
                 <h3>Key Outcomes</h3>
-                <p>Summarize findings and design considerations uncovered by the project.</p>
+                <p>This project demonstrated that AI generated musical soundscapes of visual art could improve
+                    the art viewing experience of BLV patrons with participants noting that musical soundscapes added a more immersive, emotionally engaging layer than description alone
+                    and that they helped build a stronger connection to artworks through mood and atmosphere. The project also revealed the following design
+                    considerations for future systems aimed at improving visual art accessibility through automated musical soundscapes:
+                </p>
+                <br>
                 <ul>
-                    <li>Finding or milestone #1.</li>
-                    <li>Finding or milestone #2.</li>
-                    <li>Finding or milestone #3.</li>
+                    <li>Support narrative storytelling</li>
+                    <li>Improve contextual accuracy of music and sound effects</li>
+                    <li>Sound mixing and timing matter</li>
+                    <li>Customisation is important</li>
+                    <li>Soundscapes should complement other accessibility methods</li>
                 </ul>
             </div>
 
@@ -62,17 +97,16 @@
                 <h3>Gallery</h3>
                 <div class="project-gallery">
                     <img src="../images/project4.jpg" alt="Project image 1">
-                    <img src="../images/project2.png" alt="Project image 2">
-                    <img src="../images/project3.JPG" alt="Project image 3">
+                    <img src="../images/System Diagram Second Study.png" alt="Project image 2">
                 </div>
             </div>
 
             <div class="project-section">
                 <h3>Publications & Related Reading</h3>
                 <div class="project-links">
-                    <a href="#">Publication title or DOI link</a>
-                    <a href="#">Conference paper or preprint</a>
-                    <a href="#">Related article, talk, or dataset</a>
+                    <a href="https://computationalcreativity.net/iccc24/papers/ICCC24_paper_103.pdf" target="_blank">ICCC Publication</a>
+                    <a href="https://omny.fm/shows/vision-australia-radio/focal-point-30-jun-2021" target="_blank">Vision Australia Interview</a>
+                    <a href="https://www.youtube.com/playlist?list=PLJXhSHZOX4QwkaqoS-o-cTdc90dM_aFKh" target="_blank">Playlist of Generated Soundscapes</a>
                 </div>
             </div>
         </section>

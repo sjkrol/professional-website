@@ -233,6 +233,45 @@ h2 {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+.project-section h4 {
+    font-size: 1.05em;
+    font-weight: 600;
+    margin: 12px 0 6px;
+    color: #111827;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.project-section p + p {
+    margin-top: 8px;
+}
+
+.project-figure {
+    margin: 16px 0 0;
+}
+
+.project-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 18px rgba(17, 24, 39, 0.08);
+}
+
+.project-figure figcaption {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #6b7280;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.project-section ul,
+.project-section ol {
+    padding-left: 1.25em;
+    margin-left: 0;
+    list-style-position: outside;
+}
+
 .project-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
