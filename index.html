@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jane Smith - Academic Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-text">
+                <h1>Dr. Stephen James Krol</h1>
+                <p class="subtitle">Research Fellow in Machine Learning</p>
+                <nav>
+                    <a href="./index.html" class="active">About</a>
+                    <a href="#research">Research</a>
+                    <a href="./publications-1.html">Publications</a>
+                    <a href="#teaching">Teaching</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+            <img src="./profile_picture.jpeg" alt="Dr. Stephen James Krol" class="profile-pic">
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p class="intro">Research Fellow in the Department of Human-Centered Computing at Monash University, specializing in machine learning and human-computer interaction.</p>
+            <div class="bio">
+                <p>My research focuses on developing machine learning solutions to assist creatives in their practices. I take a human-centered approach to AI, ensuring that the systems I develop are not only technically sound but also solve real problems for working practitioners.</p>
+                <p>Prior to this position, I completed my PhD in Artificial Intelligence at Monash University under the supervision of <a href="https://research.monash.edu/en/persons/jon-mccormack/">Prof. Jon McCormack</a> and <a href="https://profiles.sussex.ac.uk/p640433-maria-llano-rodriguez/about">A/Prof. Teresa Llano</a>.</p>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Recent Publications</h2>
+            
+            <div class="publication">
+                <h3><a href="https://openreview.net/forum?id=k9HOf7NBLp">Supporting Creative Ownership through Deep Learning-Based Music Variation</a></h3>
+                <p class="authors">Stephen James Krol, Maria Teresa Llano, Jon McCormack</p>
+                <p class="venue">NeurIPS Creative AI Track 2025</p>
+            </div>
+
+            <div class="publication">
+                <h3><a href="https://dl.acm.org/doi/full/10.1145/3706598.3713894">Exploring the Needs of Practising Musicians in Co-Creative AI Through Co-Design</a></h3>
+                <p class="authors">Stephen James Krol, Maria Teresa Llano, Miguel Loor Paredes</p>
+                <p class="venue">CHI Conference on Human Factors in Computing Systems 2025</p>
+            </div>
+
+            <div class="publication">
+                <h3><a href="https://computationalcreativity.net/iccc24/papers/ICCC24_paper_103.pdf">Design Considerations for Automatic Musical Soundscapes of Visual Art for People with Blindeness or Low Vision</a></h3>
+                <p class="authors">Stephen James Krol, Maria Teresa Llano, Matthew Butler, Cagatay Goncu</p>
+                <p class="venue">International Conference on Computational Creativity 2024</p>
+            </div>
+            <a href="./publications-1.html">All Publications →</a>
+        </section>
+
+        <section id="teaching">
+            <h2>Teaching</h2>
+
+            <div class="course">
+                <div class="term">S2 2022</div>
+                <h3>Theory Of Computation</h3>
+                <p>FIT2014: Introduces formal languages, models of computation, and computational complexity. It looks at what computers can and cannot compute. Topics include finite state automata, regular expressions, grammars, pushdown automata, computable functions, Turing machines, polynomial-time reductions, complexity classes P and NP, and NP-completeness.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <a href="mailto:stephen.krol@monash.edu">stephen.krol@monash.edu</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Office</strong>
+                    SensiLab Building G, Monash University Caulfield Campus
+                </div>
+                <div class="contact-item">
+                    <strong>Office Hours</strong>
+                    Tuesday - Friday<br>10:00 AM - 6:00 PM
+                </div>
+                <div class="contact-item">
+                    <strong>Google Scholar</strong>
+                    <a href="https://scholar.google.com/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank">View Profile →</a>
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn</strong>
+                    <a href="https://www.linkedin.com/in/stephen-james-krol/" target="_blank">Connect →</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Github</strong>
+                    <a href="https://github.com/sjkrol" target="_blank">View →</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Dr. Stephen James Krol. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        // Smooth scrolling, but skip links to .html pages
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+
+                // Skip if href points to an HTML page
+                if (href && href.endsWith('.html')) return;
+
+                // Only prevent default and scroll for anchor links
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const target = document.querySelector(href);
+                    if (!target) return;
+
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+
+        // Update active nav on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
