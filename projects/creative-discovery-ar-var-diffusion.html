@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Discovery with AR-VAR-Diffusion</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-text">
+                <h1>Dr. Stephen James Krol</h1>
+                <p class="subtitle">Research Fellow in Machine Learning</p>
+                <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                    <span class="mobile-menu-toggle-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+                <nav>
+                    <a href="../index.html">About</a>
+                    <a href="../research.html" class="active">Research</a>
+                    <a href="../publications-1.html">Publications</a>
+                    <a href="../teaching.html">Teaching</a>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
+            </div>
+            <img src="../images/profile_picture.jpeg" alt="Dr. Stephen James Krol" class="profile-pic">
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <a class="project-back" href="../research.html">← Back to Research</a>
+            <h2>Creative Discovery with AR-VAR-Diffusion</h2>
+            <div class="project-meta">
+                <span>Role: Research Lead/PhD Student</span>
+                <span>Status: Completed</span>
+                <span>Focus: Generative Models · Diffusion · Creative AI</span>
+            </div>
+
+            <div class="project-hero">
+                <img src="../images/Controllability_pixel_density.png" alt="Project hero image">
+            </div>
+
+            <div class="project-section">
+                <h3>Overview</h3>
+                <p>This project investigates how AI systems can better support creative exploration by combining fine-grained controllability of generative models (via Attribute-Regularised VAE-Diffusion) and exploration of diverse high-quality design alternatives (via Quality-Diversity Search). The overarching goal is to move beyond "black-box" generative systems toward tools that allow artists and designers to explore large creative spaces, control meaningful aesthetic attributes, and discover multiple high-quality alternatives rather than a single "optimal" output. This work is primarily aimed at creative practitioners, researchers in computational creativity and AI-based Creativity Support Tools, human-AI interaction researchers, and the evolutionary art and generative design communities. The core research questions driving this work are:
+                </p>
+                <br>
+                <ol>
+                    <li>How can we introduce meaningful, fine-grained control into deep generative models for complex images?</li>
+                    <li>How can we explore creative design spaces in a way that preserves both quality and diversity?</li>
+                    <li>How can AI systems support creative discovery rather than merely optimisation?</li>
+                </ol>
+            </div>
+
+            <div class="project-section">
+                <h3>Approach</h3>
+                <p>The project consists of two complementary system designs that together enable controllable and diverse creative exploration.</p>
+                
+                <h4>Controllable High-Fidelity Generation (AR-VAE-Diffusion)</h4>
+                <p>The AR-VAE-Diffusion model combines an Attribute-Regularised Variational Autoencoder (AR-VAE) that embeds interpretable attributes into specific latent dimensions using Attribute-Based Latent Space Regularisation (ALSR), with a Denoising Diffusion Probabilistic Model (DDPM) that enhances generative quality to produce detailed, high-fidelity images. Training occurs in two stages: first training the AR-VAE with attribute regularisation, then training the diffusion model conditioned on VAE reconstructions. During inference, a latent vector is sampled, selected dimensions are adjusted, the modified latent vector is decoded, and diffusion refinement produces a high-quality final image. Two complex abstract datasets were used: the Curl Noise Dataset (agent-based generative system producing abstract line drawings, ≈68k images) with attributes for Pixel Density and Generation Size, and the Kaggle Abstract Art Dataset (abstract paintings, ≈28k images) with attributes for Colour Diversity and Structural Complexity. The system was evaluated using disentanglement metrics (Interpretability, MIG, Modularity, SAP, Spearman correlation) and visual inspection, finding that AR-VAE improved interpretability and disentanglement over Beta-VAE, while diffusion significantly improved visual quality while preserving control.</p>
+                <figure class="project-figure">
+                    <img src="../images/diffuseVAE.jpg" alt="AR-VAE-Diffusion architecture diagram">
+                    <figcaption>System architecture diagram showing the two-stage AR-VAE-Diffusion pipeline.</figcaption>
+                </figure>
+                
+                <h4>Creative Exploration via Quality-Diversity Search</h4>
+                <p>The second component introduces a Quality-Diversity Search (QDS) framework applied to a generative line drawing system, consisting of four stages: Generation, Evaluation (Fitness + Diversity), Classification, and Breeding. The agent-based line drawing model has 14 genetic parameters that fully determine visual behaviour. For fitness evaluation, a participant study was conducted where 255 randomly generated images were ranked by aesthetic preference, revealing that structural complexity (a compression-based metric) correlated strongly (r = 0.72) with preference, which became the fitness function. For diversity evaluation, a VAE was trained on 40,000 generated images, latent vectors were extracted and reduced via PCA and t-SNE to 2D, and K-means clustering defined prototypical design families. Diversity was measured as the ratio of populated clusters.</p>
+                
+                <h4>MAP-Elites Implementation</h4>
+                <p>The design space was partitioned into clusters, with each cluster maintaining its elite (highest fitness), and mutation-based breeding exploring nearby space. Comparison between QD Search and a Fitness-only Genetic Algorithm showed that QD Search increased both fitness and diversity, while fitness-only search converged to similar-looking high-density circular patterns.</p>
+                <figure class="project-figure">
+                    <img src="../images/Controllability_pixel_density.png" alt="MAP-Elites implementation comparison">
+                    <figcaption>Controlling the pixel density in generated images using AR-VAE-Diffusion. Top designs have a lower
+                        pixel density, while bottom designs have a higher pixel density. The system allows for fine-grained control over this attribute while maintaining high visual quality.</figcaption>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="project-section">
+                <h3>Key Outcomes</h3>
+                <p>This work demonstrates that effective AI-based creativity support tools require interpretable latent spaces, attribute-level control, mechanisms for diversity-aware exploration, and balance between agency and user direction. The project reframes generative AI not as an optimiser of single outputs, but as a tool for controlled, diverse creative discovery. The following key findings emerged:
+                </p>
+                <br>
+                <ul>
+                    <li><strong>Controllability Can Be Extended to High-Fidelity Images:</strong> The AR-VAE-Diffusion model preserves attribute control, dramatically improves image quality over standard VAE, and enables fine-grained, non-text-based control, broadening ALSR applicability to complex artistic datasets.</li>
+                    <li><strong>Creative Search Should Optimise for Quality and Diversity:</strong> Fitness-only search collapses toward visually similar solutions, while Quality-Diversity Search maintains diverse, high-quality alternatives and better mirrors real creative exploration.</li>
+                    <li><strong>Attribute Design Is Crucial:</strong> Simpler attributes (e.g., pixel density) produce clearer control, while complex attributes reduce disentanglement but remain manipulable. Attribute definition shapes emergent behaviours.</li>
+                    <li><strong>AI as Co-Creative Partner:</strong> The systems preserve some unpredictability, introduce new elements during manipulation, and balance user control with generative agency.</li>
+                    <li><strong>Trade-offs and Limitations:</strong> Diffusion adds computational cost, simple fitness metrics bias results, and latent reduction techniques may distort clustering.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Gallery</h3>
+                <div class="project-gallery" 
+                data-images="../images/Controllability_pixel_density.png|../images/diffuseVAE.jpg|../images/MAP-Elites_gen_049.jpg|../images/Variations2.png|../images/space-reduction.png" 
+                data-alts="Controlling pixel density in generated images|Diffuse VAE architecture.|MAP-Elites generation diversity example.|Variations from VAE-Diffusion.|Space reduction example for QD-Search.">
+                    <img src="../images/Controllability_pixel_density.png" alt="Controlling pixel density in generated images">
+                </div>
+            </div>
+
+            <div class="project-section">
+                <h3>Publications & Related Reading</h3>
+                <div class="project-links">
+                    <a href="https://dl.acm.org/doi/abs/10.1145/3583133.3590567" target="_blank">GECCO Paper on Creative Discovery</a>
+                    <a href="https://ceur-ws.org/Vol-3810/paper3.pdf" target="_blank">CREAI AI workshop paper alongside ECAI 2024</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Dr. Stephen James Krol. All rights reserved.</p>
+    </footer>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+        <div class="mobile-menu-panel">
+            <button class="mobile-menu-close" type="button" aria-label="Close">×</button>
+            <nav>
+                <a href="../index.html">About</a>
+                <a href="../research.html" class="active">Research</a>
+                <a href="../publications-1.html">Publications</a>
+                <a href="../teaching.html">Teaching</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <script src="../projects.js?v=3"></script>
+    <script src="../site.js"></script>
+</body>
+</html>

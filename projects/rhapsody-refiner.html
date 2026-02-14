@@ -36,32 +36,62 @@
             <a class="project-back" href="../research.html">← Back to Research</a>
             <h2>Rhapsody Refiner: A Deep Learning Symbolic Music Variator</h2>
             <div class="project-meta">
-                <span>Role: Research Lead</span>
+                <span>Role: Research Lead/PhD Student</span>
                 <span>Status: Completed</span>
                 <span>Focus: Music AI · Deep Learning · Creative Tools</span>
             </div>
 
             <div class="project-hero">
-                <img src="../images/placeholder-1.svg" alt="Project hero image">
+                <img src="../images/M.jpg" alt="Project hero image">
             </div>
 
             <div class="project-section">
                 <h3>Overview</h3>
-                <p>Use this space to describe the project goals, collaborators, and the audience or community involved.</p>
+                <p>This project investigates the design and evaluation of a deep learning-based music variation system that supports creative ownership and active co-creation rather than replacing the musician. The central focus is preserving personal ownership and artistic identity in AI-assisted music composition. Rather than generating complete songs from prompts, this work explores how AI can extend and vary a musician's own ideas through fine-grained control over musical attributes using masked prediction with MusicBERT. The primary target users are practising musicians, including songwriters, producers, jazz musicians, composers, and instrumentalists. The core research questions driving this work are:
+                </p>
+                <br>
+                <ol>
+                    <li>How can AI systems support musicians while preserving creative ownership?</li>
+                    <li>How does a variation-based AI system function in ecological (real-world) composition settings?</li>
+                    <li>What tensions arise between technological capability and artistic identity?</li>
+                    <li>How can masked prediction enable controllable music variation with strict control over musical attributes?</li>
+                </ol>
             </div>
+
+            <figure class="project-figure" style="max-width: 500px; margin: 0 auto;">
+                <img src="../images/Rhapsody Refiner UI.png" alt="System overview" style="width: 100%; display: block;">
+                <figcaption>Interface for Rhapsody Refiner.</figcaption>
+            </figure>
 
             <div class="project-section">
                 <h3>Approach</h3>
-                <p>Detail the technical approach, model architecture, training process, and evaluation methods used.</p>
+                <p>Rhapsody Refiner uses MusicBERT, a bidirectional transformer for symbolic music understanding, combined with masked token prediction to enable controllable music variation.</p>
+                
+                <h4>System Architecture</h4>
+                <p>The core architecture consists of four key technical features. First, <strong>Octuple Encoding</strong> represents each MIDI note with 8 attributes (bar, instrument, pitch, position, velocity, duration, time signature, key), enabling attribute-level control without entanglement. Second, <strong>Masked Token Prediction</strong> allows the system to mask selected note attributes and predict them autoregressively using MusicBERT, with masking governed by a variation parameter determining how many notes are modified. Third, <strong>Strict Attribute Control</strong> enables users to selectively vary pitch, beat placement, beat span (duration), and dynamics, with only explicitly selected attributes being masked and predicted. Finally, <strong>Logit Filtering</strong> ensures correct token types, optional pitch range constraints, and optional key-fixing with soft scaling. The system also includes a New Notes Function allowing users to add new notes proportionally across bars before prediction.</p>
+                
+                <h4>Variation Generation Process</h4>
+                <p>The variation process begins with users uploading MIDI files and selecting variation amount (0-100%), attributes to vary, bar ranges, pitch range or key constraints, and temperature per attribute. The system then uniformly samples notes to mask, masks only selected attributes, iteratively predicts masked tokens via MusicBERT, applies probability filtering and temperature scaling, and outputs a modified MIDI file. Crucially, the system never generates a full song from scratch; it requires an initial musical phrase from the user. For technical details of the implementation see related reading at the end of the page.</p>
+                <figure class="project-figure">
+                    <img src="../images/Masked Example.drawio.png" alt="Variation generation process diagram">
+                    <figcaption>Diagram illustrating the masked prediction strategy used by Rhapsody Refiner.</figcaption>
+                </figure>
+                
+                <h4>Four-Week Ecological Evaluation</h4>
+                <p>Eight practising musicians with diverse backgrounds (songwriters, jazz musicians, producers) participated in a four-week ecological evaluation. Participants received software and a tutorial, were asked to compose a song using Rhapsody Refiner, and were encouraged to use the system consistently. They kept reflective journals while system logs recorded usage, and post-study semi-structured interviews were conducted. Data was analysed via inductive thematic analysis, prioritising ecological validity over lab control.</p>
             </div>
 
             <div class="project-section">
                 <h3>Key Outcomes</h3>
-                <p>Summarize outcomes, technical contributions, and artifacts produced by the work.</p>
+                <p>The evaluation revealed important insights about AI systems for creative practice. AI systems for creative practice should require effort, preserve authorship, and function as ideation partners rather than autonomous creators. The following key findings emerged:
+                </p>
+                <br>
                 <ul>
-                    <li>Finding or milestone #1.</li>
-                    <li>Finding or milestone #2.</li>
-                    <li>Finding or milestone #3.</li>
+                    <li><strong>A Tool for "Moments," Not Complete Ideas:</strong> Participants rarely used entire generated variations, instead extracting small parts or moments that sparked inspiration. Outputs were often imperfect or chaotic, with randomness being valuable for ideation. The system functioned as a spark generator, not a finished-composition engine.</li>
+                    <li><strong>Strong Sense of Creative Ownership:</strong> Participants consistently reported full control over the direction of composition and ownership of the creative process. Because the system depends on the musician's input and refinement, ownership remains human-centred.</li>
+                    <li><strong>Active Co-Creation Encouraged by Imperfection:</strong> Because outputs were incomplete or messy, musicians had to filter, refine, and shape ideas. This effort reinforced authorship and agency, suggesting that systems requiring skill may better support practising musicians.</li>
+                    <li><strong>Identity and Humanity in Music:</strong> Participants expressed discomfort with fully generative prompt-based systems that threatened their sense of worth. Rhapsody Refiner avoided this by not generating initial ideas, not producing finished songs independently, and relying on musician skill.</li>
+                    <li><strong>Design Principles for AI Music Tools:</strong> Key principles include preserving ownership through requiring user input and effort, supporting rather than replacing by generating variations instead of complete artefacts, enabling attribute-level control through strict masking and logit filtering, embracing imperfection where randomness and partial failure promote exploration, and conducting ecological evaluations to reveal identity tensions and workflow realities.</li>
                 </ul>
             </div>
 

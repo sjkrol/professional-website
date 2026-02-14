@@ -1,0 +1,285 @@
+Below is a structured synthesis of the two papers: the **technical chapter (Chapter 5: Rhapsody Refiner)**  and the **ecological evaluation paper (NeurIPS Creative AI Track)** .
+
+---
+
+# 1. Overview
+
+## Goals
+
+Across both papers, the overarching goal is to design and evaluate a **deep learning–based music variation system** that supports *creative ownership* and *active co-creation* rather than replacing the musician.
+
+The evaluation paper frames the central problem as preserving **personal ownership and artistic identity** in AI-assisted music composition . Rather than generating complete songs from prompts, the project explores how AI can extend and vary a musician’s own ideas.
+
+The technical chapter complements this by addressing how such a system can be implemented in a way that enables *fine-grained control over musical attributes* through masked prediction with MusicBERT .
+
+Together, the goals are:
+
+* To design an AI Creativity Support Tool (AI-CST) that preserves human agency.
+* To technically implement controllable symbolic music variation.
+* To evaluate how such a system functions in real-world composition over time.
+
+---
+
+## Target Audience
+
+The primary target users are **practising musicians**, defined as individuals actively engaged in music-making professionally or as serious hobbyists .
+
+Participants included songwriters, producers, jazz musicians, composers, and instrumentalists (Table 1, evaluation paper) .
+
+Secondary audiences include:
+
+* HCI and Creative AI researchers,
+* Designers of AI co-creative systems,
+* Developers of symbolic music models.
+
+---
+
+## Core Research Questions
+
+From the evaluation paper :
+
+* How can AI systems support musicians while preserving creative ownership?
+* How does a variation-based AI system function in ecological (real-world) composition settings?
+* What tensions arise between technological capability and artistic identity?
+
+From the technical chapter :
+
+* How can masked prediction (MusicBERT) be used to facilitate controllable music variation?
+* How can strict control over musical attributes (pitch, rhythm, dynamics) be achieved without retraining large models?
+* Why are alternative generative paradigms (e.g., latent VAEs, encoder-decoder transformers) insufficient for these design requirements?
+
+The unifying research question across both works:
+
+> How can deep learning–based music variation systems support creative agency, ownership, and active co-creation?
+
+---
+
+# 2. Approach
+
+## System Design
+
+### Core Architecture
+
+Rhapsody Refiner uses **MusicBERT**, a bidirectional transformer for symbolic music understanding .
+
+Key technical features:
+
+1. **Octuple Encoding**
+
+   * Each MIDI note is represented by 8 attributes (bar, instrument, pitch, position, velocity, duration, time signature, key) .
+   * This enables attribute-level control without entanglement.
+
+2. **Masked Token Prediction**
+
+   * The system masks selected note attributes.
+   * MusicBERT predicts masked tokens autoregressively .
+   * Masking is governed by a variation parameter ( \nu ), determining how many notes are modified .
+
+3. **Strict Attribute Control**
+   Users can selectively vary:
+
+   * Pitch
+   * Beat Placement
+   * Beat Span (duration)
+   * Dynamics 
+
+   Only explicitly selected attributes are masked and predicted, avoiding entangled changes.
+
+4. **Logit Filtering**
+   Probability filtering ensures:
+
+   * Correct token types
+   * Optional pitch range constraints
+   * Optional key-fixing with soft scaling (β parameter) 
+
+5. **New Notes Function**
+   Users can add new notes proportionally across bars before prediction .
+
+---
+
+### Why This Architecture?
+
+The chapter describes two rejected approaches:
+
+* **Latent-space VAE-based variation**
+  Rejected due to attribute entanglement and poor controllability .
+
+* **Music Transformer encoder-decoder models**
+  Rejected due to difficulty of training, reproducibility, and limited controllability .
+
+Masked prediction with MusicBERT was chosen because it:
+
+* Avoids retraining,
+* Provides strict attribute isolation,
+* Supports variation without generating entirely new ideas.
+
+This aligns directly with the design philosophy: *support, don’t replace*.
+
+---
+
+## How Variations Are Generated
+
+The variation process:
+
+1. User uploads MIDI.
+
+2. Selects:
+
+   * Variation amount (0–100%)
+   * Attributes to vary
+   * Bar ranges
+   * Pitch range or key constraints
+   * Temperature per attribute 
+
+3. The system:
+
+   * Uniformly samples notes to mask (based on ν) .
+   * Masks only selected attributes.
+   * Iteratively predicts masked tokens via MusicBERT.
+   * Applies probability filtering and temperature scaling.
+   * Outputs a modified MIDI file.
+
+Crucially:
+
+> The system never generates a full song from scratch; it requires an initial musical phrase from the user .
+
+---
+
+## Participant Study Setup
+
+The evaluation used a **four-week ecological evaluation** .
+
+### Participants
+
+* 8 practising musicians .
+* Diverse backgrounds (songwriters, jazz musicians, producers).
+
+### Procedure
+
+* Participants received software + tutorial.
+* Asked to compose a song using Rhapsody Refiner.
+* Encouraged consistent use across 4 weeks.
+* Kept reflective journals.
+* System logs recorded usage.
+* Post-study semi-structured interviews conducted.
+* Data analysed via inductive thematic analysis .
+
+This design prioritised ecological validity over lab control.
+
+---
+
+# 3. Key Outcomes
+
+## 1. A Tool for “Moments,” Not Complete Ideas
+
+Participants rarely used entire generated variations.
+
+Instead:
+
+* They extracted “small parts” or “moments” that sparked inspiration .
+* Outputs were often imperfect or chaotic.
+* Randomness was sometimes valuable for ideation.
+
+The system functioned as:
+
+> A spark generator, not a finished-composition engine.
+
+Design implication:
+
+* Imperfect systems can encourage deeper engagement.
+* Over-polished AI outputs may reduce creative agency.
+
+---
+
+## 2. Strong Sense of Creative Ownership
+
+Participants consistently reported:
+
+* Full control over direction of composition .
+* Ownership of the creative process.
+* Majority ownership of the final artefact.
+
+Some described minor collaborative credit (~10%), but emphasised:
+
+* The emotion and vision came from them .
+
+Key finding:
+
+> Because the system depends on the musician’s input and refinement, ownership remains human-centred.
+
+---
+
+## 3. Active Co-Creation Encouraged by Imperfection
+
+Because outputs were incomplete or messy:
+
+* Musicians had to filter, refine, and shape ideas.
+* The system required effort.
+* This effort reinforced authorship and agency .
+
+Design insight:
+
+* Systems that require skill may better support practising musicians.
+* Novices may require different design trade-offs.
+
+---
+
+## 4. Identity and Humanity in Music
+
+Participants expressed discomfort with fully generative prompt-based systems that:
+
+* Threatened their sense of worth,
+* Reduced their role to editor .
+
+Rhapsody Refiner avoided this because:
+
+* It does not generate initial ideas.
+* It cannot produce finished songs independently.
+* It relies on musician skill .
+
+Thus:
+
+> Preserving the human as originator of ideas was central to acceptance.
+
+---
+
+## 5. Design Considerations Uncovered
+
+From both papers, key design implications include:
+
+### a) Preserve Ownership
+
+Require user input and effort.
+Avoid full automation of ideation.
+
+### b) Support, Don’t Replace
+
+Generate variations—not complete artefacts.
+
+### c) Enable Attribute-Level Control
+
+Strict masking and logit filtering were critical technical enablers .
+
+### d) Embrace Imperfection
+
+Randomness and partial failure promoted exploration .
+
+### e) Ecological Evaluation Matters
+
+Long-term use reveals identity tensions and workflow realities.
+
+---
+
+# Final Synthesis
+
+Together, the two papers demonstrate a tightly coupled **design–implementation–evaluation loop**:
+
+* **Technical innovation** (masked prediction + logit filtering) enabled fine-grained symbolic control.
+* **Design philosophy** prioritised ownership and effort.
+* **Ecological evaluation** revealed that imperfection and dependency on the musician strengthened creative agency.
+
+The core contribution is not merely a variation algorithm, but a design principle:
+
+> AI systems for creative practice should require effort, preserve authorship, and function as ideation partners rather than autonomous creators.
+
+Rhapsody Refiner operationalises this principle both technically and experientially.
