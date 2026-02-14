@@ -51,7 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (images.length === 0) return;
 
-        const visibleCount = 3;
+        const getVisibleCount = () => {
+            return window.innerWidth <= 768 ? 1 : 3;
+        };
+
+        let visibleCount = getVisibleCount();
         const track = document.createElement('div');
         track.className = 'project-gallery-track';
         gallery.innerHTML = '';
@@ -74,12 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let currentIndex = 0;
-        const maxIndex = Math.max(images.length - visibleCount, 0);
+        let maxIndex = Math.max(images.length - visibleCount, 0);
         const interval = Number.parseInt(gallery.dataset.interval || '4000', 10);
+        const gap = 10; // matches --gallery-gap in CSS
 
         const updatePosition = () => {
-            const offsetPercent = (100 / visibleCount) * currentIndex;
-            track.style.transform = `translateX(-${offsetPercent}%)`;
+            const imageWidth = track.offsetWidth / visibleCount;
+            const offsetPixels = (imageWidth + gap) * currentIndex;
+            track.style.transform = `translateX(-${offsetPixels}px)`;
         };
 
         const controls = document.createElement('div');
@@ -136,5 +142,17 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePosition();
 
         scheduleAutoAdvance();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const newVisibleCount = getVisibleCount();
+            if (newVisibleCount !== visibleCount) {
+                visibleCount = newVisibleCount;
+                currentIndex = 0;
+                maxIndex = Math.max(images.length - visibleCount, 0);
+                updatePosition();
+                scheduleAutoAdvance();
+            }
+        });
     });
 });

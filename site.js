@@ -55,4 +55,25 @@ document.addEventListener('DOMContentLoaded', () => {
             closeButton.addEventListener('click', closeMenu);
         }
     });
+
+    // Hide header on scroll down, show on scroll up (mobile only)
+    let lastScrollY = 0;
+    const header = document.querySelector('header');
+    const scrollThreshold = 10; // Amount to scroll up before header reappears
+
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth > 768) return;
+
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+            // Scrolling down
+            header.classList.add('header-hidden');
+        } else if (currentScrollY < lastScrollY - scrollThreshold) {
+            // Scrolling up by noticeable amount
+            header.classList.remove('header-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+    });
 });
