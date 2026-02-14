@@ -517,6 +517,57 @@ h2 {
     box-shadow: 0 6px 16px rgba(17, 24, 39, 0.2);
 }
 
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background: rgba(255, 255, 255, 0.95);
+    color: #111827;
+    font-size: 2em;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(17, 24, 39, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.3);
+}
+
+.lightbox-prev {
+    left: -60px;
+}
+
+.lightbox-next {
+    right: -60px;
+}
+
+@media (max-width: 768px) {
+    .lightbox-prev {
+        left: 10px;
+    }
+    
+    .lightbox-next {
+        right: 10px;
+    }
+    
+    .lightbox-prev,
+    .lightbox-next {
+        background: rgba(255, 255, 255, 0.9);
+    }
+}
+
 .project-links {
     display: grid;
     gap: 10px;

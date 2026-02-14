@@ -1,0 +1,293 @@
+Here is a structured summary of the paper **“Exploring the Needs of Practising Musicians in Co-Creative AI Through Co-Design”** , organised according to your requested format.
+
+---
+
+# 1. Overview
+
+## Goals
+
+The paper investigates how **co-creative AI systems for music composition** can be designed in collaboration with practising musicians. Rather than evaluating a finished AI tool, the study aims to:
+
+* Identify the **needs, values, and concerns** of practising musicians regarding AI in music.
+* Use a **co-design methodology** to develop a musical AI tool alongside musicians.
+* Derive **design insights** to guide future development of co-creative AI systems.
+
+A key motivation is that most existing AI music tools are built first and evaluated later, with limited involvement from practising musicians during early design stages.
+
+## Target Audience
+
+The research is primarily aimed at:
+
+* **HCI researchers**
+* **AI and music technology developers**
+* **Designers of co-creative AI systems**
+* Scholars in **human-AI interaction and computational creativity**
+
+More broadly, it addresses anyone developing AI tools intended for **professional or actively practising musicians**, including composers, performers, producers, and music educators.
+
+## Core Research Questions
+
+The study explores:
+
+1. **What role could co-creative AI meaningfully play in practising musicians’ workflows?**
+2. **How do practising musicians perceive AI as collaborator vs tool?**
+3. **What design features are required for AI systems to align with musicians’ creative practices?**
+4. **How can co-design methodologies help uncover deeper needs beyond usability feedback?**
+
+---
+
+# 2. Approach
+
+The research follows a **co-design case study** involving 13 practising musicians across:
+
+* Two workshops
+* A two-week ecological (in-the-wild) evaluation
+
+The overall workflow is illustrated in Figure 1 (page 3), showing how workshops informed system development and how the ecological study refined insights .
+
+---
+
+## A. Workshop 1 – Perceptions of AI in Creative Practice
+
+### Purpose
+
+To explore musicians’ composition processes and their perceptions of AI in music.
+
+### Structure
+
+* Pre-workshop: Participants composed a piece and reflected on their process.
+* Discussion of composition methods (themes, emotion, intuition, embodiment).
+* Composition task:
+
+  * Human–human collaboration
+  * Human–AI collaboration (using Music Transformer for reharmonisation)
+* Group discussion on AI as collaborator vs tool.
+
+### Key Observations
+
+* Music is seen as **deeply human, emotional, embodied practice**.
+* Strong resistance to framing AI as a *collaborator*.
+* Musicians emphasized:
+
+  * **Ownership of the creative process**
+  * Control over melody and harmonic decisions
+* Openness to AI as a **tool**, particularly one that:
+
+  * Generates *musical variations*
+  * Supports ideation rather than replaces authorship
+  * Allows adjustable levels of agency
+
+### Outcome
+
+Participants proposed the idea of a **musical variation tool**, which became the focus of development.
+
+---
+
+## B. Workshop 2 – Designing a Music Variation Tool
+
+### Purpose
+
+To test whether a variation tool would fit into musicians’ workflows and identify desired features.
+
+### Setup
+
+* Participants used a prototype system based on **Music Transformer**.
+* They uploaded MIDI files and generated harmonic variations.
+* Followed by design discussion.
+
+### Findings
+
+Musicians confirmed that:
+
+* A variation tool is especially valuable during the **ideation phase**.
+* The tool should:
+
+  * Allow control over the *level* of variation (e.g., sliders)
+  * Allow control over the *type* of variation (pitch, rhythm, harmony)
+  * Possibly support training on personal style
+  * Preserve expressive MIDI qualities
+  * Integrate into **DAWs (Digital Audio Workstations)**
+
+---
+
+## C. System Design – MusicBERT-Based Variation Tool
+
+Based on workshop insights, the researchers developed a new system using **MusicBERT** (page 7) .
+
+### Technical Approach
+
+The system:
+
+* Uses masked prediction on MIDI sequences.
+* Operates on MusicBERT’s **Octuple encoding**, where each note includes eight attributes:
+
+  * Bar
+  * Instrument
+  * Position
+  * Pitch
+  * Duration
+  * Velocity
+  * Time Signature
+  * Tempo
+    (Table 3, page 8 )
+
+### Variation Mechanism
+
+* Users mask selected notes or attributes.
+* The model predicts replacements.
+* More masking = more variation.
+* Users control which bars are varied.
+
+### Added Functionalities
+
+To reflect co-design insights, the team implemented:
+
+1. **Add New Notes** – Insert masked tokens to generate new musical material.
+2. **Bar Control** – Select specific bars for variation.
+3. **Bar-Level Masking** – More cohesive variations (aligned with model training).
+
+This shift from Music Transformer to MusicBERT improved **controllability**, directly responding to musician feedback.
+
+---
+
+## D. Two-Week Ecological Evaluation
+
+### Setup
+
+* 6 musicians used the system in their own creative environments.
+* Hosted on AWS.
+* Participants kept journals.
+* Concluded with focus group discussion.
+
+### How Soundscapes Were Generated and Evaluated
+
+Soundscapes (MIDI compositions) were generated through:
+
+* Selective masking of musical attributes
+* Chaining variations
+* Adding new notes
+* Iterative filtering and refinement
+
+Evaluation was qualitative and included:
+
+* Participant journals
+* Focus group transcripts
+* Thematic analysis
+
+Musicians:
+
+* Selected useful fragments
+* Edited/refined generated material
+* Used outputs primarily as *inspiration* rather than final content
+
+---
+
+# 3. Key Outcomes
+
+## 1. AI Tool vs AI Collaborator
+
+Musicians strongly resisted AI being framed as a collaborator. They argued:
+
+* Collaboration requires empathy and shared human experience.
+* AI lacks emotional embodiment.
+* The term “collaborator” felt inappropriate for machines.
+
+However, they welcomed AI as:
+
+* A **creative tool**
+* An idea generator
+* A variation engine
+
+**Design Implication:** Framing matters. Adoption is influenced by whether AI is presented as a collaborator or tool.
+
+---
+
+## 2. Ownership of the Creative Process
+
+Participants valued:
+
+* Maintaining authorship
+* Retaining decision-making authority
+* Refining and filtering outputs themselves
+
+The variation tool succeeded because it:
+
+* Supported ideation
+* Left final creative control with the musician
+* Did not automate full compositions
+
+**Design Principle:** AI should augment, not replace, core creative decisions.
+
+---
+
+## 3. Variation as a Productive Interaction Model
+
+Variation generation:
+
+* Encouraged exploration
+* Disrupted habitual compositional patterns
+* Produced unexpected harmonic or rhythmic ideas
+
+One participant noted it pushed them out of routine habits and into more open-ended composition.
+
+**Design Insight:** AI variation tools can function as structured creative friction.
+
+---
+
+## 4. Terminology Gap – Machine vs Musical Language
+
+Some musicians struggled with technical attribute labels (e.g., “position”).
+
+This revealed a disconnect between:
+
+* MIDI-based machine representation
+* Traditional music terminology
+
+**Design Recommendation:** Translate machine parameters into musician-friendly language.
+
+---
+
+## 5. Influence of Musical Background
+
+Different musicians preferred different controls:
+
+* Drummers prioritized rhythm.
+* Electronic musicians were comfortable with MIDI parameters.
+* Traditionally trained musicians preferred conventional music terminology.
+
+**Implication:** There is no universal musician profile—design must consider subgroups.
+
+---
+
+## 6. Integration into Existing Ecosystems
+
+Participants emphasized:
+
+* Integration into DAWs (e.g., Ableton, Logic)
+* Practical deployment considerations (processing power, usability)
+
+Without integration into existing workflows, adoption would be unlikely.
+
+---
+
+# Overall Contribution
+
+This paper demonstrates that:
+
+* **Co-design can meaningfully shape AI music tools from early development stages.**
+* Practising musicians are open to AI—but under specific conditions:
+
+  * Tool framing
+  * Creative ownership
+  * Controllability
+  * Workflow integration
+* Variation-based AI systems offer a productive model for co-creative interaction.
+
+The work contributes both:
+
+1. A **case study methodology** for co-designing musical AI.
+2. A set of **design insights** for future co-creative AI systems aimed at practising musicians.
+
+---
+
+If you would like, I can also convert this into a shorter executive summary or a presentation-ready slide outline.

@@ -47,27 +47,54 @@
 
             <div class="project-section">
                 <h3>Overview</h3>
-                <p>Use this space to describe the project goals, collaborators, and the audience or community involved.</p>
+                <p>This project investigates how co-creative AI systems for music composition can be designed in collaboration with practising musicians. Rather than evaluating a finished AI tool, this work takes a co-design approach to identify the needs, values, and concerns of practising musicians regarding AI in music, and uses these insights to develop a musical AI tool alongside musicians. The research is primarily aimed at HCI researchers, AI and music technology developers, and designers of co-creative AI systems. The core research questions driving this work are:
+                </p>
+                <br>
+                <ol>
+                    <li>What role could co-creative AI meaningfully play in practising musicians' workflows?</li>
+                    <li>How do practising musicians perceive AI as collaborator vs tool?</li>
+                    <li>What design features are required for AI systems to align with musicians' creative practices?</li>
+                    <li>How can co-design methodologies help uncover deeper needs beyond usability feedback?</li>
+                </ol>
             </div>
 
             <div class="project-section">
                 <h3>Approach</h3>
-                <p>Detail the co-design process, evaluation format, and any qualitative or quantitative methods used.</p>
+                <p>The research follows a co-design case study involving 13 practising musicians across two workshops and a two-week ecological evaluation, exploring how musicians compose and how AI might support their creative process.</p>
+                
+                <h4>Workshop 1 – Perceptions of AI in Creative Practice</h4>
+                <p>The first workshop explored musicians' composition processes and their perceptions of AI in music. Participants composed a piece beforehand and reflected on their process, then engaged in both human-human and human-AI collaboration tasks using Music Transformer for reharmonisation. Key observations revealed that music is seen as a deeply human, emotional, embodied practice, with strong resistance to framing AI as a <em>collaborator</em>. However, musicians showed openness to AI as a <em>tool</em>, particularly one that generates musical variations, supports ideation rather than replacing authorship, and allows adjustable levels of agency. This led to the proposal of a musical variation tool.</p>
+                
+                <h4>Workshop 2 – Designing a Music Variation Tool</h4>
+                <p>The second workshop tested whether a variation tool would fit into musicians' workflows and identified desired features. Participants used a prototype system based on Music Transformer, uploading MIDI files and generating harmonic variations. Musicians confirmed that a variation tool is especially valuable during the ideation phase and should allow control over both the level and type of variation (pitch, rhythm, harmony), possibly support training on personal style, preserve expressive MIDI qualities, and integrate into DAWs (Digital Audio Workstations).</p>
+                
+                <h4>System Design – MusicBERT-Based Variation Tool</h4>
+                <p>Based on workshop insights, a new system was developed using MusicBERT, which uses masked prediction on MIDI sequences operating on Octuple encoding where each note includes eight attributes (bar, instrument, position, pitch, duration, velocity, time signature, tempo). Users can mask selected notes or attributes, with the model predicting replacements—more masking creates more variation. The system implements functionalities including adding new notes, bar control for selecting specific bars to vary, and bar-level masking for more cohesive variations. This shift from Music Transformer to MusicBERT improved controllability, directly responding to musician feedback.</p>
+                
+                <h4>Two-Week Ecological Evaluation</h4>
+                <p>Six musicians used the system in their own creative environments for two weeks, keeping journals and concluding with a focus group discussion. Soundscapes (MIDI compositions) were generated through selective masking of musical attributes, chaining variations, adding new notes, and iterative filtering and refinement. Evaluation was qualitative, with musicians selecting useful fragments, editing and refining generated material, and primarily using outputs as inspiration rather than final content.</p>
             </div>
 
             <div class="project-section">
                 <h3>Key Outcomes</h3>
-                <p>Summarize outcomes, design insights, and artifacts produced by the work.</p>
+                <p>This work demonstrates that co-design can meaningfully shape AI music tools from early development stages, and that practising musicians are open to AI under specific conditions including tool framing, creative ownership, controllability, and workflow integration. The variation-based AI system offers a productive model for co-creative interaction. The following design insights emerged for future co-creative AI systems aimed at practising musicians:
+                </p>
+                <br>
                 <ul>
-                    <li>Finding or milestone #1.</li>
-                    <li>Finding or milestone #2.</li>
-                    <li>Finding or milestone #3.</li>
+                    <li><strong>AI Tool vs AI Collaborator:</strong> Musicians strongly resisted AI being framed as a collaborator, preferring terminology that positions AI as a creative tool or idea generator.</li>
+                    <li><strong>Ownership of the Creative Process:</strong> Musicians value maintaining authorship and decision-making authority, with AI supporting ideation rather than automating full compositions.</li>
+                    <li><strong>Variation as a Productive Interaction Model:</strong> Variation generation encourages exploration, disrupts habitual compositional patterns, and produces unexpected ideas.</li>
+                    <li><strong>Terminology Gap:</strong> A disconnect exists between MIDI-based machine representation and traditional music terminology. Parameters should be translated into musician-friendly language.</li>
+                    <li><strong>Influence of Musical Background:</strong> Different musicians (drummers, electronic musicians, traditionally trained) prefer different controls, indicating no universal musician profile.</li>
+                    <li><strong>Integration into Existing Ecosystems:</strong> Integration into DAWs and practical deployment considerations are critical for adoption.</li>
                 </ul>
             </div>
 
             <div class="project-section">
                 <h3>Gallery</h3>
-                <div class="project-gallery" data-images="../images/project3.JPG|../images/project1.png|../images/project2.png|../images/placeholder-2.svg|../images/placeholder-3.svg" data-alts="Project image 1|Project image 2|Project image 3|Placeholder image 2|Placeholder image 3">
+                <div class="project-gallery" 
+                data-images="../images/project3.JPG|../images/w2-1.jpg|../images/w2-2.JPG|../images/w1-1.jpg|../images/w1-2.jpg" 
+                data-alts="Image of some musicians who took part in the study. |Discussion with participants in second workshop. |Participant engaging with system in second workshop. |Participant engaging in workshop 1. |Participant engaging in composition activity, workshop 1.">
                     <img src="../images/project3.JPG" alt="Project image 1">
                 </div>
             </div>
@@ -75,9 +102,9 @@
             <div class="project-section">
                 <h3>Publications & Related Reading</h3>
                 <div class="project-links">
-                    <a href="#">Publication title or DOI link</a>
-                    <a href="#">Conference paper or preprint</a>
-                    <a href="#">Related article, talk, or dataset</a>
+                    <a href="https://dl.acm.org/doi/full/10.1145/3706598.3713894" target="_blank">CHI 2025 Paper (Honourable Mention)</a>
+                    <a href="https://openreview.net/forum?id=k9HOf7NBLp" target="_blank">NeurIPS Creative AI 2025 Paper</a>
+                    <a href="https://dl.acm.org/doi/suppl/10.1145/3706598.3713894/suppl_file/pn4114-talk-video.mp4" target="_blank">CHI Presentation</a>
                 </div>
             </div>
         </section>
@@ -98,7 +125,7 @@
             </nav>
         </div>
     </div>
-    <script src="../projects.js"></script>
+    <script src="../projects.js?v=3"></script>
     <script src="../site.js"></script>
 </body>
 </html>
