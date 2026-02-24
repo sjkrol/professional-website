@@ -82,13 +82,15 @@ function createPagination(containerId, currentPage, totalPages) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
+    const buildPageUrl = (pageNumber) => `./publications.html?page=${pageNumber}`;
+
     const ul = document.createElement('ul');
 
     // Prev link
     if (currentPage > 1) {
         const prevLi = document.createElement('li');
         const prevA = document.createElement('a');
-        prevA.href = `?page=${currentPage - 1}`;
+        prevA.href = buildPageUrl(currentPage - 1);
         prevA.textContent = '‹ Prev';
         prevLi.appendChild(prevA);
         ul.appendChild(prevLi);
@@ -98,7 +100,7 @@ function createPagination(containerId, currentPage, totalPages) {
     for (let i = 1; i <= totalPages; i++) {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.href = `?page=${i}`;
+        a.href = buildPageUrl(i);
         a.textContent = i;
         if (i === currentPage) {
             a.classList.add('active');
@@ -111,7 +113,7 @@ function createPagination(containerId, currentPage, totalPages) {
     if (currentPage < totalPages) {
         const nextLi = document.createElement('li');
         const nextA = document.createElement('a');
-        nextA.href = `?page=${currentPage + 1}`;
+        nextA.href = buildPageUrl(currentPage + 1);
         nextA.textContent = 'Next ›';
         nextLi.appendChild(nextA);
         ul.appendChild(nextLi);
