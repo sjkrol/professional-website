@@ -1,0 +1,28 @@
+const PROJECTS = [
+  { id:'bottom-up', active:true,  title:'Guiding Bottom-Up Generative Modelling with Machine Learning', blurb:'Developing a unified framework that uses ML (ViTs) to guide the emergent behaviour of agent-based generative systems toward designer-specified outcomes.', tags:['Generative','Agent-based','ML'] },
+  { id:'arch',      active:true,  title:'Exploring the Role of AI in Architecture', blurb:'How do architects actually want to collaborate with generative tools? A practice-led field investigation into AI in early architectural ideation.', tags:['HCI','Architecture','Qualitative'] },
+  { id:'rhapsody',  active:false, title:'Rhapsody Refiner: A Deep Learning Symbolic Music Variator', blurb:'A MusicBERT-based variation system built for and with practising musicians to support creative ownership rather than replacing the musician.', tags:['Music','Transformer','Tool'] },
+  { id:'ai-mus',    active:false, title:'Designing AI Tools for Practising Musicians', blurb:'Co-design fieldwork with 13 working musicians on how AI fits into rehearsal and composition practice.', tags:['HCI','Music','Co-design'] },
+  { id:'ar-var',    active:false, title:'Creative Discovery with AR-VAR-Diffusion', blurb:'Combining AR-VAE-Diffusion for controllable high-fidelity image generation with Quality-Diversity Search for diverse creative exploration.', tags:['Diffusion','VAE','Generative'] },
+  { id:'sounds',    active:false, title:'Accessible Soundscapes for Visual Art', blurb:'Automatic musical soundscapes to enhance gallery accessibility for blind and low-vision visitors, evaluated with 10 BLV participants.', tags:['Accessibility','Audio','HCI'] },
+];
+
+const PUBS = [
+  { year:2025, venue:'NeurIPS Cr. AI', title:'Supporting Creative Ownership through Deep Learning-Based Music Variation',                                                              authors:'S. Krol, M. Llano, J. McCormack',           tags:['Music','HCI'],              url:'https://openreview.net/forum?id=k9HOf7NBLp' },
+  { year:2025, venue:'CHI',            title:'Exploring the Needs of Practising Musicians in Co-Creative AI Through Co-Design (Honourable Mention)',                                   authors:'S. Krol, M. Llano, M. Loor Paredes',       tags:['HCI','Music'],              url:'https://dl.acm.org/doi/full/10.1145/3706598.3713894' },
+  { year:2024, venue:'CREAI/ECAI',     title:'From Simple to Complex: Extending the Generative Capabilities of Attribute-Based Latent Space Regularization through AR-VAE-Diffusion', authors:'S. Krol, A. Sood, M. Llano',               tags:['Generative','Diffusion'],   url:'https://ceur-ws.org/Vol-3810/paper3.pdf' },
+  { year:2024, venue:'ICCC',           title:'Design Considerations for Automatic Musical Soundscapes of Visual Art for People with Blindness or Low Vision',                          authors:'S. Krol, M. Llano, M. Butler, C. Goncu',   tags:['Accessibility','Audio'],    url:'https://computationalcreativity.net/iccc24/papers/ICCC24_paper_103.pdf' },
+  { year:2024, venue:'EvoMUSART',      title:'No Longer Trending on Artstation: Prompt Analysis of Generative AI Art',                                                                authors:'J. McCormack, M. Llano, S. Krol, N. Rajcic',tags:['Generative','Text-Image'], url:'https://link.springer.com/chapter/10.1007/978-3-031-56992-0_18' },
+  { year:2023, venue:'SIGGRAPH Asia',  title:'Infinite Colours',                                                                                                                      authors:'X. Ho, S. Krol',                            tags:['Generative','Art'],         url:'https://dl.acm.org/doi/pdf/10.1145/3610537' },
+  { year:2023, venue:'GECCO',          title:'Creative Discovery using Quality-Diversity Search',                                                                                      authors:'J. McCormack, C. Cruz Gambardella, S. Krol', tags:['Generative','Evolution'],  url:'https://dl.acm.org/doi/abs/10.1145/3583133.3590567' },
+  { year:2023, venue:'EvoMUSART',      title:'Is Writing Prompts Really Making Art?',                                                                                                 authors:'J. McCormack et al.',                       tags:['Generative','Art'],         url:'https://link.springer.com/chapter/10.1007/978-3-031-29956-8_13' },
+  { year:2022, venue:'EvoMUSART',      title:'Towards the Generation of Musical Explanations with GPT-3',                                                                             authors:'S. Krol, M. Llano, J. McCormack',           tags:['Music','NLP'],              url:'https://link.springer.com/chapter/10.1007/978-3-031-03789-4_9' },
+  { year:2021, venue:'ICCC',           title:'Framing through Music: A Pilot Study',                                                                                                  authors:'S. Krol, M. Llano, C. Goncu',               tags:['Music','Accessibility'],    url:'https://computationalcreativity.net/iccc21/wp-content/uploads/2021/09/ICCC_2021_paper_130.pdf' },
+];
+
+const TEACH = [
+  { code:'FIT9136', title:'Introduction to Python Programming', term:'S1 · 2026', role:'Tutor',
+    blurb:'Introduces programming fundamentals using Python: control structures, built-in and complex datatypes, mechanisms for modularity, basic libraries, and good programming practices.' },
+  { code:'FIT2014', title:'Theory of Computation',              term:'S2 · 2022', role:'Tutor',
+    blurb:'Formal languages, models of computation, and complexity. FSA, regular expressions, grammars, pushdown automata, Turing machines, P/NP, NP-completeness.' },
+];
