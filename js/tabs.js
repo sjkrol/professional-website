@@ -1,4 +1,4 @@
-const paths = { home:'~', research:'~/research', pub:'~/publications', teaching:'~/teaching', contact:'~/contact', project:'~/research/project' };
+const paths = { home:'~', research:'~/research', pub:'~/publications', teaching:'~/teaching', contact:'~/contact' };
 const KEY = 'sjk.tab';
 function setTab(name){
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.tab === name));
@@ -8,4 +8,6 @@ function setTab(name){
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => setTab(t.dataset.tab)));
-try { const saved = localStorage.getItem(KEY); if (saved && paths[saved]) setTab(saved); } catch(e){}
+const _hash = location.hash.slice(1);
+if (_hash && paths[_hash]) setTab(_hash);
+else { try { const saved = localStorage.getItem(KEY); if (saved && paths[saved]) setTab(saved); } catch(e){} }

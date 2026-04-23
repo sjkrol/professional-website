@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Creative Discovery with AR-VAR-Diffusion — Stephen James Krol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<header class="chrome">
+  <div class="prompt">
+    <div class="dots">
+      <span class="dot" style="background:var(--hot)"></span>
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent2)"></span>
+    </div>
+    <span class="dim">sjk@sensilab</span>
+    <span class="dim">:</span>
+    <span class="accent">~/research/ar-var</span>
+    <span class="soft">$</span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <a class="tab" href="../index.html#home">./~</a>
+    <a class="tab on" href="../index.html#research">./research</a>
+    <a class="tab" href="../index.html#pub">./publications</a>
+    <a class="tab" href="../index.html#teaching">./teaching</a>
+    <a class="tab" href="../index.html#contact">./contact</a>
+  </nav>
+</header>
+
+<main>
+<div class="main">
+  <a class="proj-back" href="../index.html">← back to research</a>
+  <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/research/ar-var</span><span class="user">$</span> cat README.md</div>
+
+  <div class="proj-head">
+    <div>
+      <div class="label" style="color:var(--ink-fade);margin-top:10px">○ shipped · Diffusion · VAE · Generative</div>
+      <h2 class="proj-title">Creative Discovery with AR-VAR-Diffusion</h2>
+      <p class="proj-sub">Combining fine-grained generative control (AR-VAE-Diffusion) with diversity-aware exploration (Quality-Diversity Search) for AI-assisted creative discovery.</p>
+    </div>
+    <div class="proj-meta">
+      <div class="label" style="margin-bottom:10px">// meta</div>
+      <div class="kv"><span>role</span><span>Research Lead / PhD</span></div>
+      <div class="kv"><span>status</span><span>Completed · 2024</span></div>
+      <div class="kv"><span>focus</span><span>Generative Models · Diffusion · Creative AI</span></div>
+      <div class="kv"><span>collab</span><span>Monash · SensiLab</span></div>
+      <div class="kv"><span>venues</span><span>GECCO 2023 · CREAI/ECAI 2024</span></div>
+    </div>
+  </div>
+
+  <div class="proj-hero"><img src="../images/diffuseVAE.jpg" alt="Creative Discovery with AR/VAR and Diffusion"></div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 01</span>Overview</h3>
+    <div class="proj-body">
+      <p>This project investigates how AI systems can better support creative exploration by combining <em>fine-grained controllability</em> (Attribute-Regularised VAE-Diffusion) with <em>diversity-aware search</em> (Quality-Diversity Search).</p>
+      <p>The overarching goal is to move beyond black-box generative systems toward tools that allow artists and designers to explore large creative spaces, control meaningful aesthetic attributes, and discover multiple high-quality alternatives rather than a single optimal output.</p>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 02</span>Research questions</h3>
+    <ol class="rq-list">
+      <li>How can we introduce meaningful, fine-grained control into deep generative models for complex images?</li>
+      <li>How can we explore creative design spaces in a way that preserves both quality and diversity?</li>
+      <li>How can AI systems support creative discovery rather than merely optimisation?</li>
+    </ol>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 03</span>Approach</h3>
+    <div class="proj-body"><p>Two complementary systems: AR-VAE-Diffusion for controllable high-fidelity generation, and a Quality-Diversity Search framework for diverse creative exploration of generative design spaces.</p></div>
+    <div class="findings" style="margin-top:18px">
+      <div class="finding"><div class="tag">01</div><h4>AR-VAE-Diffusion Architecture</h4><p>Combines an Attribute-Regularised VAE (ALSR) that embeds interpretable attributes into specific latent dimensions with a DDPM that enhances generative quality. Training is two-stage: first the AR-VAE, then the diffusion model conditioned on VAE reconstructions.</p></div>
+      <div class="finding"><div class="tag">02</div><h4>Datasets &amp; Evaluation</h4><p>Tested on the Curl Noise Dataset (68k abstract line drawings, attributes: pixel density and generation size) and the Kaggle Abstract Art Dataset (28k abstract paintings, attributes: colour diversity and structural complexity).</p></div>
+      <div class="finding"><div class="tag">03</div><h4>Quality-Diversity Search</h4><p>A four-stage pipeline (Generation, Evaluation, Classification, Breeding) applied to a 14-parameter agent-based line drawing system. Fitness: structural complexity (r = 0.72 with human preference). Diversity: ratio of populated VAE latent clusters.</p></div>
+      <div class="finding"><div class="tag">04</div><h4>MAP-Elites Implementation</h4><p>The design space is partitioned into clusters; each maintains its elite (highest fitness). Mutation-based breeding explores nearby space. QD Search produced significantly more diverse and high-quality outputs than fitness-only genetic search.</p></div>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 05</span>Key outcomes</h3>
+    <div class="findings">
+      <div class="finding"><div class="tag">finding 01</div><h4>Controllability extends to high-fidelity images</h4><p>AR-VAE-Diffusion preserves attribute control while dramatically improving image quality over standard VAE, broadening the applicability of attribute-based latent space regularisation to complex artistic datasets.</p></div>
+      <div class="finding"><div class="tag">finding 02</div><h4>QD beats fitness-only search</h4><p>Fitness-only search collapses toward visually similar solutions, while Quality-Diversity Search maintains diverse, high-quality alternatives that better mirror real creative exploration.</p></div>
+      <div class="finding"><div class="tag">finding 03</div><h4>Attribute design is crucial</h4><p>Simpler attributes (e.g., pixel density) produce clearer latent control, while complex attributes reduce disentanglement. Attribute definition shapes emergent generative behaviours.</p></div>
+      <div class="finding"><div class="tag">finding 04</div><h4>AI as co-creative partner</h4><p>The systems preserve some unpredictability, introduce new elements during manipulation, and balance user control with generative agency — supporting discovery rather than optimisation.</p></div>
+      <div class="finding"><div class="tag">finding 05</div><h4>Trade-offs &amp; limitations</h4><p>Diffusion adds computational cost, simple fitness metrics bias results toward measurable aesthetics, and latent reduction techniques (PCA, t-SNE) may distort cluster boundaries.</p></div>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 06</span>Publications &amp; code</h3>
+    <div class="links-block">
+      <a class="link-row" href="https://dl.acm.org/doi/abs/10.1145/3583133.3590567" target="_blank" rel="noopener"><div><div class="lk-title">GECCO 2023 · Creative Discovery Paper</div><div class="lk-sub">dl.acm.org/doi/abs/10.1145/3583133.3590567</div></div><span class="accent">read →</span></a>
+      <a class="link-row" href="https://ceur-ws.org/Vol-3810/paper3.pdf" target="_blank" rel="noopener"><div><div class="lk-title">CREAI/ECAI 2024 · AR-VAE-Diffusion Paper</div><div class="lk-sub">ceur-ws.org/Vol-3810/paper3.pdf</div></div><span class="accent">read →</span></a>
+    </div>
+  </div>
+
+  <div class="nav-strip">
+    <a href="ai-mus.html"><div class="lbl">← previous</div><div class="t">Designing AI Tools for Practising Musicians</div></a>
+    <a class="next" href="sounds.html"><div class="lbl">next →</div><div class="t">Accessible Soundscapes for Visual Art</div></a>
+  </div>
+</div>
+</main>
+
+</body>
+</html>

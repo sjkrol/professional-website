@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Designing AI Tools for Practising Musicians — Stephen James Krol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<header class="chrome">
+  <div class="prompt">
+    <div class="dots">
+      <span class="dot" style="background:var(--hot)"></span>
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent2)"></span>
+    </div>
+    <span class="dim">sjk@sensilab</span>
+    <span class="dim">:</span>
+    <span class="accent">~/research/ai-mus</span>
+    <span class="soft">$</span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <a class="tab" href="../index.html#home">./~</a>
+    <a class="tab on" href="../index.html#research">./research</a>
+    <a class="tab" href="../index.html#pub">./publications</a>
+    <a class="tab" href="../index.html#teaching">./teaching</a>
+    <a class="tab" href="../index.html#contact">./contact</a>
+  </nav>
+</header>
+
+<main>
+<div class="main">
+  <a class="proj-back" href="../index.html">← back to research</a>
+  <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/research/ai-mus</span><span class="user">$</span> cat README.md</div>
+
+  <div class="proj-head">
+    <div>
+      <div class="label" style="color:var(--ink-fade);margin-top:10px">○ shipped · HCI · Music · Co-design</div>
+      <h2 class="proj-title">Designing AI Tools for Practising Musicians</h2>
+      <p class="proj-sub">A co-design case study with 13 practising musicians exploring how AI can be meaningfully integrated into composition and rehearsal practice.</p>
+    </div>
+    <div class="proj-meta">
+      <div class="label" style="margin-bottom:10px">// meta</div>
+      <div class="kv"><span>role</span><span>Research Lead / PhD</span></div>
+      <div class="kv"><span>status</span><span>Completed · 2024</span></div>
+      <div class="kv"><span>focus</span><span>Co-creative AI · Music · HCI</span></div>
+      <div class="kv"><span>collab</span><span>Monash · SensiLab</span></div>
+      <div class="kv"><span>venues</span><span>CHI 2025 · NeurIPS Creative AI 2025</span></div>
+    </div>
+  </div>
+
+  <div class="proj-hero"><img src="../images/project3.JPG" alt="Designing AI Tools for Practising Musicians"></div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 01</span>Overview</h3>
+    <div class="proj-body">
+      <p>This project investigates how co-creative AI systems for music composition can be designed <em>in collaboration</em> with practising musicians. Rather than evaluating a finished AI tool, this work takes a co-design approach to identify the needs, values, and concerns of practising musicians regarding AI in music.</p>
+      <p>The research involves 13 musicians across two workshops and a two-week ecological evaluation, using the insights gathered to develop a musical AI variation tool alongside the musicians themselves.</p>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 02</span>Research questions</h3>
+    <ol class="rq-list">
+      <li>What role could co-creative AI meaningfully play in practising musicians' workflows?</li>
+      <li>How do practising musicians perceive AI as collaborator vs. tool?</li>
+      <li>What design features are required for AI systems to align with musicians' creative practices?</li>
+      <li>How can co-design methodologies help uncover deeper needs beyond usability feedback?</li>
+    </ol>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 03</span>Approach</h3>
+    <div class="proj-body"><p>A co-design case study with 13 practising musicians across two workshops and a two-week ecological evaluation, iteratively developing a MusicBERT-based variation tool.</p></div>
+    <div class="findings" style="margin-top:18px">
+      <div class="finding"><div class="tag">01</div><h4>Workshop 1 · Perceptions of AI</h4><p>Musicians composed a piece beforehand, then engaged in human-human and human-AI collaboration tasks using Music Transformer. Strong resistance emerged to framing AI as a collaborator; openness to AI as a variation tool.</p></div>
+      <div class="finding"><div class="tag">02</div><h4>Workshop 2 · Variation Tool Design</h4><p>Musicians tested a prototype variation system, confirming variation is most valuable during ideation and should support control over pitch, rhythm, and harmony, and integrate into DAWs.</p></div>
+      <div class="finding"><div class="tag">03</div><h4>MusicBERT System Design</h4><p>Based on workshop insights, a new system was developed using MusicBERT with Octuple encoding (8 note attributes). Users mask selected attributes; the model predicts replacements — more masking creates more variation.</p></div>
+      <div class="finding"><div class="tag">04</div><h4>Two-Week Ecological Evaluation</h4><p>Six musicians used the system in their own creative environments, keeping reflective journals and concluding with a focus group. Outputs were primarily used as ideation sparks — filtered, refined, and chained iteratively.</p></div>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 05</span>Key outcomes</h3>
+    <div class="findings">
+      <div class="finding"><div class="tag">finding 01</div><h4>AI Tool vs. AI Collaborator</h4><p>Musicians strongly resisted AI being framed as a collaborator, preferring terminology that positions it as a creative tool or idea generator.</p></div>
+      <div class="finding"><div class="tag">finding 02</div><h4>Ownership of the creative process</h4><p>Musicians value maintaining authorship and decision-making authority, with AI supporting ideation rather than automating full compositions.</p></div>
+      <div class="finding"><div class="tag">finding 03</div><h4>Variation as a productive model</h4><p>Variation generation encourages exploration, disrupts habitual compositional patterns, and produces unexpected ideas without replacing initial authorship.</p></div>
+      <div class="finding"><div class="tag">finding 04</div><h4>Terminology gap</h4><p>A disconnect exists between MIDI-based machine representation and traditional music terminology — parameters should be translated into musician-friendly language.</p></div>
+      <div class="finding"><div class="tag">finding 05</div><h4>Musical background influences needs</h4><p>Drummers, electronic musicians, and traditionally trained musicians prefer different controls, indicating no universal musician profile for AI tool design.</p></div>
+      <div class="finding"><div class="tag">finding 06</div><h4>DAW integration is critical</h4><p>Integration into existing digital audio workstations and practical deployment considerations are critical for real-world adoption by practising musicians.</p></div>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 06</span>Publications &amp; code</h3>
+    <div class="links-block">
+      <a class="link-row" href="https://dl.acm.org/doi/full/10.1145/3706598.3713894" target="_blank" rel="noopener"><div><div class="lk-title">CHI 2025 · Co-Design Paper (Honourable Mention)</div><div class="lk-sub">dl.acm.org/doi/full/10.1145/3706598.3713894</div></div><span class="accent">read →</span></a>
+      <a class="link-row" href="https://openreview.net/forum?id=k9HOf7NBLp" target="_blank" rel="noopener"><div><div class="lk-title">NeurIPS Creative AI 2025 · Paper</div><div class="lk-sub">openreview.net/forum?id=k9HOf7NBLp</div></div><span class="accent">read →</span></a>
+      <a class="link-row" href="https://dl.acm.org/doi/suppl/10.1145/3706598.3713894/suppl_file/pn4114-talk-video.mp4" target="_blank" rel="noopener"><div><div class="lk-title">CHI 2025 · Presentation Video</div><div class="lk-sub">dl.acm.org/doi/suppl/10.1145/3706598.3713894</div></div><span class="accent">watch →</span></a>
+    </div>
+  </div>
+
+  <div class="nav-strip">
+    <a href="rhapsody.html"><div class="lbl">← previous</div><div class="t">Rhapsody Refiner</div></a>
+    <a class="next" href="ar-var.html"><div class="lbl">next →</div><div class="t">Creative Discovery with AR-VAR-Diffusion</div></a>
+  </div>
+</div>
+</main>
+
+</body>
+</html>

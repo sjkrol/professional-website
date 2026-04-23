@@ -45,6 +45,7 @@
   .kv-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-fade);margin:26px 0 10px}
   .kv{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--rule);font-size:12px}
   .kv span:first-child{color:var(--ink-fade)}
+  .kv span:last-child{text-align:right}
 
   .mission{font-family:'Fraunces',serif;font-size:42px;line-height:1.08;letter-spacing:-.025em;margin-top:16px;max-width:760px}
   .mission em{font-style:italic;color:var(--accent2)}
@@ -108,8 +109,8 @@
   .proj-title{font-family:'Fraunces',serif;font-weight:400;font-size:46px;line-height:1.05;letter-spacing:-.025em;margin:10px 0 0;color:var(--ink)}
   .proj-sub{font-size:14px;color:var(--ink-soft);margin-top:12px;max-width:620px;line-height:1.55}
   .proj-meta{border:1px solid var(--rule);background:var(--bg-raised);padding:18px}
-  .proj-hero{margin-top:26px;width:100%;aspect-ratio:16/6;background:repeating-linear-gradient(135deg,var(--bg-raised) 0 10px,var(--bg-deep) 10px 20px);border:1px solid var(--rule);display:flex;align-items:flex-end;padding:14px}
-  .proj-hero .cap{font-size:10px;color:var(--ink-fade);text-transform:uppercase;letter-spacing:.2em;background:var(--bg);padding:4px 8px;border:1px solid var(--rule)}
+  .proj-hero{margin-top:26px;width:100%}
+  .proj-hero img{width:100%;height:auto;display:block}
   .proj-section{margin-top:36px}
   .proj-section h3{font-family:'Fraunces',serif;font-weight:500;font-size:24px;line-height:1.15;letter-spacing:-.015em;margin:0 0 14px;color:var(--ink)}
   .proj-section h3 .num{color:var(--ink-fade);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.15em;margin-right:14px;vertical-align:middle}
@@ -140,7 +141,6 @@
   @media (max-width: 960px){
     .proj-head{grid-template-columns:1fr;gap:18px}
     .proj-title{font-size:30px}
-    .proj-hero{aspect-ratio:16/9}
     .findings{grid-template-columns:1fr}
     .links-block{grid-template-columns:1fr}
     .nav-strip{grid-template-columns:1fr}
