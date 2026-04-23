@@ -1,195 +1,895 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephen James Krol - Academic Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Stephen James Krol — Research Fellow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0e0f12; --bg-raised:#15171c; --bg-deep:#08090b;
+    --ink:#e6e4da; --ink-soft:#b0ada0; --ink-fade:#6e6b60;
+    --rule:#26282e; --rule-bright:#3a3d44;
+    --accent:#d3c18a; --accent2:#7ab8a0; --hot:#e06353;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Fraunces',Georgia,serif}
+  .dim{color:var(--ink-fade)}
+  .soft{color:var(--ink-soft)}
+  .accent{color:var(--accent)}
+  .accent2{color:var(--accent2)}
+
+  /* Top chrome */
+  .chrome{display:flex;justify-content:space-between;align-items:center;padding:12px 32px;border-bottom:1px solid var(--rule);background:var(--bg-deep);position:sticky;top:0;z-index:10}
+  .dots{display:flex;gap:6px}
+  .dot{width:9px;height:9px;border-radius:50%}
+  .prompt{display:flex;gap:8px;align-items:center;font-size:12px}
+  .tabs{display:flex;gap:22px;font-size:12px}
+  .tab{cursor:pointer;color:var(--ink-soft);padding-bottom:2px;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+  .tab:hover{color:var(--ink)}
+  .tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+
+  /* Shared */
+  .page{display:none;animation:fade .2s ease-out}
+  .page.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(2px)}to{opacity:1;transform:none}}
+  .cmd{font-size:12px;color:var(--ink-soft)}
+  .cmd .user{color:var(--ink-fade)}
+  .cmd .path{color:var(--accent)}
+  .h1{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.025em}
+  hr.dashed{border:0;border-top:1px dashed var(--rule);margin:0}
+
+  /* ─── Home (desktop grid) ─── */
+  .home-grid{display:grid;grid-template-columns:340px 1fr;min-height:calc(100vh - 45px)}
+  .side{border-right:1px solid var(--rule);padding:26px;background:var(--bg-deep);position:relative}
+  .main{padding:32px}
+
+  .whoami{font-family:'Fraunces',serif;font-size:34px;line-height:1.1;letter-spacing:-.02em;margin-top:18px}
+  .role{color:var(--accent);margin-top:10px}
+  .aff{color:var(--ink-fade);margin-top:2px;font-size:12px}
+
+  .kv-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-fade);margin:26px 0 10px}
+  .kv{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--rule);font-size:12px}
+  .kv span:first-child{color:var(--ink-fade)}
+
+  .mission{font-family:'Fraunces',serif;font-size:42px;line-height:1.08;letter-spacing:-.025em;margin-top:16px;max-width:760px}
+  .mission em{font-style:italic;color:var(--accent2)}
+  .mission .hl{color:var(--accent)}
+  .lede{margin-top:18px;font-size:13px;color:var(--ink-soft);max-width:640px;line-height:1.7}
+
+  /* Tables */
+  .tbl{border:1px solid var(--rule);margin-top:18px;border-radius:2px;overflow:hidden}
+  .tbl .row{display:grid;align-items:start}
+  .tbl .row.head{padding:10px 14px;background:var(--bg-deep);color:var(--ink-fade);font-size:10px;text-transform:uppercase;letter-spacing:.15em;border-bottom:1px solid var(--rule)}
+  .tbl .row.body{padding:12px 14px;border-bottom:1px solid var(--rule);transition:background .12s}
+  .tbl .row.body:last-child{border-bottom:none}
+  .tbl .row.body:hover{background:var(--bg-raised)}
+  .tbl .row.body.alt{background:var(--bg-deep)}
+  .tbl .row.body.alt:hover{background:var(--bg-raised)}
+
+  /* Home table */
+  .proj-cols{grid-template-columns:32px 90px 1fr 220px 60px;gap:8px}
+  .status-active{color:var(--accent)}
+  .status-done{color:var(--ink-fade)}
+
+  /* ─── Research ─── */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px}
+  .card{border:1px solid var(--rule);background:var(--bg-raised);padding:18px;transition:border-color .15s,transform .15s;cursor:pointer}
+  .card:hover{border-color:var(--rule-bright)}
+  .card.active{border-color:var(--accent)}
+  .card h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;line-height:1.2;letter-spacing:-.01em;margin:8px 0 0;color:var(--ink)}
+  .card p{font-size:12.5px;color:var(--ink-soft);margin:8px 0 0;line-height:1.55}
+  .card-meta{display:flex;justify-content:space-between;align-items:center}
+  .card-meta .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.18em}
+  .card-foot{display:flex;justify-content:space-between;border-top:1px dashed var(--rule);margin-top:12px;padding-top:10px;font-size:11px}
+
+  .gitlog{margin-top:26px;font-size:12px;line-height:1.95;color:var(--ink-soft)}
+  .gitlog .y{color:var(--accent)}
+
+  /* ─── Publications ─── */
+  .filters{padding:14px 0 10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .filters .lbl{font-size:10px;color:var(--ink-fade);text-transform:uppercase;letter-spacing:.18em;margin-right:8px}
+  .chip{font-size:11px;padding:3px 10px;border:1px solid var(--rule);color:var(--ink-soft);border-radius:2px;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+  .chip:hover{color:var(--ink);border-color:var(--rule-bright)}
+  .chip.on{border-color:var(--accent);color:var(--accent);background:rgba(211,193,138,.05)}
+
+  .pub-cols{grid-template-columns:60px 90px 1fr 200px 100px;gap:12px}
+  .pub-title{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);line-height:1.25;letter-spacing:-.005em}
+  .pub-auth{font-size:11px;color:var(--ink-soft);margin-top:3px;font-style:italic}
+  .pub-act{text-align:right;font-size:11px}
+  .pub-act a{color:var(--accent);border-bottom:1px solid var(--accent)}
+  .pub-act .sep{margin:0 6px;color:var(--ink-fade)}
+
+  /* ─── Teaching ─── */
+  .teach-cols{grid-template-columns:100px 110px 1fr 140px 40px;gap:12px}
+  .teach-title{font-family:'Fraunces',serif;font-size:18px;color:var(--ink);line-height:1.2}
+  .teach-note{font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.5;max-width:520px}
+  .role-tag{font-size:12px;color:var(--ink);border:1px solid var(--rule);padding:2px 8px;justify-self:start}
+  .open-box{margin-top:22px;border:1px dashed var(--accent);padding:18px 22px;background:var(--bg-raised)}
+
+  /* ─── Project detail ─── */
+  .proj-head{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;padding-top:8px}
+  .proj-back{font-size:11px;color:var(--ink-fade);cursor:pointer;margin-bottom:14px;display:inline-block;border-bottom:1px dashed var(--rule);padding-bottom:2px}
+  .proj-back:hover{color:var(--accent);border-color:var(--accent)}
+  .proj-title{font-family:'Fraunces',serif;font-weight:400;font-size:46px;line-height:1.05;letter-spacing:-.025em;margin:10px 0 0;color:var(--ink)}
+  .proj-sub{font-size:14px;color:var(--ink-soft);margin-top:12px;max-width:620px;line-height:1.55}
+  .proj-meta{border:1px solid var(--rule);background:var(--bg-raised);padding:18px}
+  .proj-hero{margin-top:26px;width:100%;aspect-ratio:16/6;background:repeating-linear-gradient(135deg,var(--bg-raised) 0 10px,var(--bg-deep) 10px 20px);border:1px solid var(--rule);display:flex;align-items:flex-end;padding:14px}
+  .proj-hero .cap{font-size:10px;color:var(--ink-fade);text-transform:uppercase;letter-spacing:.2em;background:var(--bg);padding:4px 8px;border:1px solid var(--rule)}
+  .proj-section{margin-top:36px}
+  .proj-section h3{font-family:'Fraunces',serif;font-weight:500;font-size:24px;line-height:1.15;letter-spacing:-.015em;margin:0 0 14px;color:var(--ink)}
+  .proj-section h3 .num{color:var(--ink-fade);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.15em;margin-right:14px;vertical-align:middle}
+  .proj-body{font-family:'Fraunces',serif;font-size:16px;line-height:1.65;color:var(--ink-soft);max-width:720px}
+  .proj-body p{margin:0 0 14px}
+  .proj-body em{color:var(--ink);font-style:italic}
+  .proj-body strong{color:var(--ink);font-weight:500}
+  .rq-list{margin:10px 0 0;padding:0;list-style:none;counter-reset:rq;border-top:1px solid var(--rule)}
+  .rq-list li{counter-increment:rq;padding:14px 0 14px 56px;border-bottom:1px solid var(--rule);position:relative;font-family:'Fraunces',serif;font-size:16px;line-height:1.5;color:var(--ink)}
+  .rq-list li::before{content:"RQ" counter(rq);position:absolute;left:0;top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.12em}
+  .findings{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px}
+  .finding{border:1px solid var(--rule);padding:16px;background:var(--bg-raised)}
+  .finding .tag{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.2em}
+  .finding h4{font-family:'Fraunces',serif;font-weight:500;font-size:17px;line-height:1.2;margin:6px 0 8px;color:var(--ink)}
+  .finding p{font-size:13px;color:var(--ink-soft);line-height:1.55;margin:0}
+  .links-block{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+  .link-row{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid var(--rule);background:var(--bg-raised);transition:border-color .15s;cursor:pointer}
+  .link-row:hover{border-color:var(--accent)}
+  .link-row .lk-title{font-family:'Fraunces',serif;font-size:16px;color:var(--ink)}
+  .link-row .lk-sub{font-size:11px;color:var(--ink-fade);margin-top:2px}
+  .nav-strip{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:40px;padding-top:22px;border-top:1px solid var(--rule)}
+  .nav-strip a{border:1px solid var(--rule);padding:14px 16px;display:block;transition:border-color .15s;cursor:pointer;background:var(--bg-raised)}
+  .nav-strip a:hover{border-color:var(--accent)}
+  .nav-strip .lbl{font-size:10px;color:var(--ink-fade);text-transform:uppercase;letter-spacing:.2em}
+  .nav-strip .t{font-family:'Fraunces',serif;font-size:15px;color:var(--ink);margin-top:4px;line-height:1.3}
+  .nav-strip .next{text-align:right}
+
+  @media (max-width: 960px){
+    .proj-head{grid-template-columns:1fr;gap:18px}
+    .proj-title{font-size:30px}
+    .proj-hero{aspect-ratio:16/9}
+    .findings{grid-template-columns:1fr}
+    .links-block{grid-template-columns:1fr}
+    .nav-strip{grid-template-columns:1fr}
+    .nav-strip .next{text-align:left}
+  }
+
+  /* ─── Contact ─── */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:32px}
+  .email-box{margin-top:28px;border:1px solid var(--accent);padding:22px;background:var(--bg-raised)}
+  .email-big{font-size:22px;color:var(--ink);margin-top:8px;letter-spacing:.01em;word-break:break-all}
+  .yaml{margin:0;font-size:13px;line-height:1.9;background:var(--bg-deep);padding:18px;border:1px solid var(--rule);white-space:pre-wrap;font-family:'JetBrains Mono',monospace}
+  .yaml .k{color:var(--accent)}
+  .yaml .v{color:var(--ink)}
+
+  /* Utility */
+  .label{font-size:10px;color:var(--ink-fade);text-transform:uppercase;letter-spacing:.18em}
+  .fw{max-width:none}
+
+  /* Tablet: narrow sidebar so content fits */
+  @media (max-width: 1024px) and (min-width: 961px){
+    .home-grid{grid-template-columns:280px 1fr}
+    .side{padding:22px}
+    .main{padding:26px}
+    .mission{font-size:34px}
+  }
+
+  /* ─── Mobile (<= 960px) ─── */
+  @media (max-width: 960px){
+    .chrome{padding:10px 14px;flex-wrap:wrap;gap:10px}
+    .chrome .prompt{font-size:11px}
+    .tabs{width:100%;flex-wrap:wrap;gap:8px 14px;padding-bottom:2px}
+    .tab{white-space:nowrap;font-size:11px}
+
+    /* Reflow home on mobile: identity → mission → metrics → research */
+    .home-grid{display:flex;flex-direction:column;min-height:auto}
+    .home-grid > .side{display:contents}
+    .home-grid > .main{display:contents}
+    .side-id{order:1;padding:22px 22px 14px;border-bottom:1px dashed var(--rule)}
+    .main-mission{order:2;padding:20px 22px 12px;border-bottom:1px solid var(--rule)}
+    .side-meta{order:3;padding:20px 22px;border-bottom:1px solid var(--rule)}
+    .main-research{order:4;padding:22px 22px 28px}
+    /* Non-home pages: scale down desktop .main padding */
+    .home-grid > .main > .main-mission,
+    .home-grid > .main > .main-research { padding-left: 22px; padding-right: 22px; }
+    .page:not([data-page="home"]) > .main{padding:22px}
+    .whoami{font-size:26px}
+    .mission{font-size:26px}
+    .lede{font-size:13px}
+
+    /* Collapse tables into stacked cards on mobile */
+    .tbl{border:none;background:transparent}
+    .tbl .row.head{display:none}
+    .tbl .row.body{display:block;padding:14px;border:1px solid var(--rule);background:var(--bg-raised);margin-bottom:10px}
+    .tbl .row.body.alt{background:var(--bg-raised)}
+    .tbl .row.body:hover{background:var(--bg-raised)}
+    .m-stack > *{display:block}
+    .m-stack .m-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
+    .m-stack .m-row .m-k{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--ink-fade)}
+    .m-stack .m-title{font-family:'Fraunces',serif;font-size:18px;line-height:1.2;color:var(--ink);margin:4px 0 6px;letter-spacing:-.01em}
+    .m-stack .m-sub{font-size:12px;color:var(--ink-soft);line-height:1.5}
+    .m-stack .m-foot{display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px dashed var(--rule);font-size:11px}
+
+    .cards{grid-template-columns:1fr;gap:10px;margin-top:16px}
+    .card h3{font-size:18px}
+
+    .contact-grid{grid-template-columns:1fr;gap:24px;padding:22px 18px}
+    .email-big{font-size:18px}
+
+    .filters{gap:5px}
+    .chip{font-size:10px;padding:3px 8px}
+  }
+</style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="header-text">
-                <h1>Stephen James Krol</h1>
-                <p class="subtitle">Research Fellow in Machine Learning</p>
-                <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
-                    <span class="mobile-menu-toggle-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </button>
-                <nav>
-                    <a href="./index.html" class="active">About</a>
-                    <a href="./research.html">Research</a>
-                    <a href="./publications.html">Publications</a>
-                    <a href="./teaching.html">Teaching</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-            <img src="./images/profile_picture.jpeg" alt="Stephen James Krol" class="profile-pic">
+
+<!-- ─────────── CHROME ─────────── -->
+<header class="chrome">
+  <div class="prompt">
+    <div class="dots">
+      <span class="dot" style="background:var(--hot)"></span>
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent2)"></span>
+    </div>
+    <span class="dim">sjk@sensilab</span>
+    <span class="dim">:</span>
+    <span class="accent" id="chromePath">~</span>
+    <span class="soft">$</span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <span class="tab on" data-tab="home" role="tab">./~</span>
+    <span class="tab" data-tab="research" role="tab">./research</span>
+    <span class="tab" data-tab="pub" role="tab">./publications</span>
+    <span class="tab" data-tab="teaching" role="tab">./teaching</span>
+    <span class="tab" data-tab="contact" role="tab">./contact</span>
+  </nav>
+</header>
+
+<main id="app">
+
+<!-- ─────────── HOME ─────────── -->
+<section class="page on" data-page="home" data-screen-label="01 Home">
+  <div class="home-grid">
+    <aside class="side">
+      <div class="side-id">
+        <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~</span><span class="user">$</span> whoami</div>
+        <h1 class="whoami">Stephen<br/>James Krol</h1>
+        <div class="role">→ research_fellow</div>
+        <div class="aff">monash.edu/hcc · sensilab</div>
+      </div>
+
+      <div class="side-meta">
+        <div class="kv-label">// status</div>
+        <div class="kv"><span>role</span><span>Research Fellow</span></div>
+        <div class="kv"><span>since</span><span>2024</span></div>
+        <div class="kv"><span>phd</span><span>Monash · AI · 2024</span></div>
+        <div class="kv"><span>lab</span><span>SensiLab</span></div>
+        <div class="kv"><span>city</span><span>Melbourne / AU</span></div>
+
+        <div class="kv-label">// metrics</div>
+        <div class="kv"><span>papers</span><span class="accent2">10</span></div>
+        <div class="kv"><span>cites (scholar)</span><span class="accent2">~120</span></div>
+        <div class="kv"><span>active projects</span><span class="accent2">02</span></div>
+        <div class="kv"><span>ext. collaborators</span><span class="accent2">09</span></div>
+
+        <div class="kv-label">// links</div>
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.9">
+          <div><a href="https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" style="color:inherit">scholar →<span class="accent2" style="margin-left:8px">krol, s.j.</span></a></div>
+          <div><a href="https://github.com/sjkrol" target="_blank" rel="noopener" style="color:inherit">github&nbsp; →<span class="accent2" style="margin-left:8px">@sjkrol</span></a></div>
+          <div><a href="mailto:stephen.krol@monash.edu" style="color:inherit">email&nbsp;&nbsp; →<span class="accent2" style="margin-left:8px">stephen.krol@monash.edu</span></a></div>
         </div>
-    </header>
+      </div>
+    </aside>
 
-    <div class="container">
-        <section id="about">
-            <img src="./images/profile_picture.jpeg" alt="Stephen James Krol" class="profile-pic-mobile">
-            <p class="intro">Research Fellow in the Department of Human-Centered Computing at Monash University, specializing in machine learning and human-computer interaction.</p>
-            <div class="bio">
-                <p>My research focuses on developing machine learning solutions to assist creatives in their practices. I take a human-centered approach to AI, ensuring that the systems I develop are not only technically sound but also solve real problems for working practitioners.</p>
-                <p>Prior to this position, I completed my PhD in Artificial Intelligence at Monash University under the supervision of <a href="https://research.monash.edu/en/persons/jon-mccormack/">Prof. Jon McCormack</a> and <a href="https://profiles.sussex.ac.uk/p640433-maria-llano-rodriguez/about">A/Prof. Teresa Llano</a>.</p>
-                  <p>
-                <strong>Google Scholar – Stephen James Krol</strong><br>
-                View the full list of publications and citation metrics for Stephen James Krol on Google Scholar:
-            </p>
-            
-            <p>
-                <a href="https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">
-                Stephen James Krol Google Scholar Profile
-                </a>
-            </p>
-            
-            <p>
-                https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao
-            </p>
+    <div class="main">
+      <div class="main-mission">
+        <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~</span><span class="user">$</span> cat mission.md</div>
+        <div class="mission">
+          I build <span class="hl">machine learning</span> tools with <em>creative practitioners</em> — so the systems solve the problem they <em style="color:var(--ink)">actually have</em>.
+        </div>
+        <p class="lede">Human-Centered Computing, Monash University. Member of SensiLab. Primary domains: music AI, generative modelling, AI-in-architecture. Approach: practice-led, qualitative, tool-making.</p>
+      </div>
 
-            </div>
-            <a href="./research.html">Research Projects →</a>
-        </section>
+      <div class="main-research">
+        <div class="cmd" style="margin-top:28px"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~</span><span class="user">$</span> ls research/ --sort time</div>
 
-        <section id="publications">
-            <h2>Recent Publications</h2>
-            <div id="recent-publications"></div>
-            <a href="./publications.html">All Publications →</a>
-        </section>
+        <div class="tbl" id="homeTable">
+          <div class="row head proj-cols">
+            <span>#</span><span>status</span><span>title</span><span>tags</span><span style="text-align:right">open</span>
+          </div>
+          <!-- injected by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <strong>Email</strong>
-                    <a href="mailto:stephen.krol@monash.edu">stephen.krol@monash.edu</a>
-                </div>
-                <div class="contact-item">
-                    <strong>Office</strong>
-                    SensiLab Building G, Monash University Caulfield Campus
-                </div>
-                <div class="contact-item">
-                    <strong>Office Hours</strong>
-                    Tuesday - Friday<br>10:00 AM - 6:00 PM
-                </div>
-                <div class="contact-item">
-                    <strong>Google Scholar</strong>
-                    <a href="https://scholar.google.com/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank">View Profile →</a>
-                </div>
-                <div class="contact-item">
-                    <strong>LinkedIn</strong>
-                    <a href="https://www.linkedin.com/in/stephen-james-krol/" target="_blank">Connect →</a>
-                </div>
-                <div class="contact-item">
-                    <strong>Github</strong>
-                    <a href="https://github.com/sjkrol" target="_blank">View →</a>
-                </div>
-            </div>
-        </section>
+<!-- ─────────── RESEARCH ─────────── -->
+<section class="page" data-page="research" data-screen-label="02 Research">
+  <div class="main">
+    <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/research</span><span class="user">$</span> ./research --verbose</div>
+    <h2 class="h1" style="font-size:42px;line-height:1;margin:14px 0 8px;color:var(--ink)">Research · <span class="accent">6 projects</span></h2>
+    <p class="lede">A full manifest of current and prior research. Each entry has a project page with methodology, code, and references where available.</p>
+
+    <div class="cards" id="researchCards"></div>
+
+    <div style="margin-top:32px">
+      <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/research</span><span class="user">$</span> git log --oneline --graph</div>
+      <div class="gitlog">
+        <div><span class="y">* 2025</span> <span class="dim">(HEAD)</span> Supporting Creative Ownership — NeurIPS Creative AI · <span class="accent2">latest</span></div>
+        <div><span class="y">* 2025</span> Exploring the Needs of Musicians — CHI · Honourable Mention</div>
+        <div><span class="y">* 2024</span> AR-VAE-Diffusion extended — CREAI/ECAI</div>
+        <div><span class="y">* 2024</span> Accessible Soundscapes — ICCC</div>
+        <div><span class="y">* 2024</span> PhD conferred · Monash · AI</div>
+        <div><span class="y">* 2023</span> Infinite Colours — SIGGRAPH Asia Art Gallery</div>
+        <div><span class="y">* 2023</span> Creative Discovery via QD Search — GECCO</div>
+        <div><span class="y">* 2023</span> Is Writing Prompts Really Making Art? — EvoMUSART</div>
+        <div><span class="y">* 2022</span> Musical Explanations with GPT-3 — EvoMUSART</div>
+        <div><span class="y">* 2021</span> Framing through Music — ICCC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PUBLICATIONS ─────────── -->
+<section class="page" data-page="pub" data-screen-label="03 Publications">
+  <div class="main">
+    <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/publications</span><span class="user">$</span> bibtex --all</div>
+    <div style="display:flex;justify-content:space-between;align-items:end;margin-top:14px;flex-wrap:wrap;gap:10px">
+      <h2 class="h1" style="font-size:42px;line-height:1;margin:0;color:var(--ink)">Publications <span class="accent">· 10</span></h2>
+      <div style="font-size:11px;color:var(--ink-fade)">
+        <a href="https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener"><span class="accent2">↗</span> scholar</a> · <span class="accent2">↗</span> all.bib · <span class="accent2">↗</span> cv.pdf
+      </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Stephen James Krol. All rights reserved.</p>
-    </footer>
-
-    <div class="mobile-menu" id="mobile-menu" hidden>
-        <div class="mobile-menu-panel">
-            <button class="mobile-menu-close" type="button" aria-label="Close">×</button>
-            <nav>
-                <a href="./index.html" class="active">About</a>
-                <a href="./research.html">Research</a>
-                <a href="./publications.html">Publications</a>
-                <a href="./teaching.html">Teaching</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
+    <div class="filters" id="pubFilters">
+      <span class="lbl">filter:</span>
+      <span class="chip on" data-tag="all">all</span>
+      <!-- tag chips injected -->
     </div>
 
-    <script>
-        // Smooth scrolling
-        // Smooth scrolling, but skip links to .html pages
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
+    <div class="tbl" id="pubTable">
+      <div class="row head pub-cols">
+        <span>year</span><span>venue</span><span>title &amp; authors</span><span>tags</span><span style="text-align:right">actions</span>
+      </div>
+      <!-- rows injected -->
+    </div>
 
-                // Skip if href points to an HTML page
-                if (href && href.endsWith('.html')) return;
+    <div class="cmd" style="margin-top:18px"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/publications</span><span class="user">$</span> wc -l *.bib → 10 entries</div>
+  </div>
+</section>
 
-                // Only prevent default and scroll for anchor links
-                if (href && href.startsWith('#')) {
-                    e.preventDefault();
-                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-                    this.classList.add('active');
+<!-- ─────────── TEACHING ─────────── -->
+<section class="page" data-page="teaching" data-screen-label="04 Teaching">
+  <div class="main">
+    <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/teaching</span><span class="user">$</span> ls -la teaching/</div>
+    <h2 class="h1" style="font-size:42px;line-height:1;margin:14px 0 8px;color:var(--ink)">Teaching &amp; <span class="accent">supervision</span></h2>
+    <p class="lede">Tutorials and guest lectures at Monash University. Currently accepting 1–2 new honours / masters projects in 2026 at the AI + creativity boundary.</p>
 
-                    const target = document.querySelector(href);
-                    if (!target) return;
+    <div class="tbl" id="teachTable">
+      <div class="row head teach-cols">
+        <span>code</span><span>term</span><span>title &amp; notes</span><span>role</span><span></span>
+      </div>
+    </div>
 
-                    const headerOffset = 100;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    <div class="open-box">
+      <div class="label accent">// open</div>
+      <div class="serif" style="font-size:22px;line-height:1.25;color:var(--ink);margin-top:6px;font-weight:500">Honours &amp; masters supervision · 2026 intake</div>
+      <p style="font-size:13px;color:var(--ink-soft);margin:6px 0 10px;max-width:680px;line-height:1.55">Areas: AI + music, generative architecture, tool-making for creative practice, evaluation of non-deterministic systems.</p>
+      <div style="font-size:12px;color:var(--accent)">→ <a href="mailto:stephen.krol@monash.edu" style="color:inherit">email stephen.krol@monash.edu</a></div>
+    </div>
+  </div>
+</section>
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+<!-- ─────────── CONTACT ─────────── -->
+<section class="page" data-page="contact" data-screen-label="05 Contact">
+  <div class="contact-grid">
+    <div>
+      <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/contact</span><span class="user">$</span> cat contact.txt</div>
+      <h2 class="h1" style="font-size:52px;line-height:1;margin:14px 0 0;color:var(--ink)">Get in <span class="accent">touch</span></h2>
+      <p class="lede" style="max-width:440px">Email is the fastest route. For informal conversations, drop by SensiLab — it helps to email first.</p>
 
+      <div class="email-box">
+        <div class="label accent">// primary</div>
+        <div class="email-big"><a href="mailto:stephen.krol@monash.edu" style="color:inherit">stephen.krol<span class="accent">@</span>monash.edu</a></div>
+        <div style="font-size:11px;color:var(--ink-fade);margin-top:6px">Replies within ~7 days</div>
+      </div>
 
-        // Update active nav on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
+      <div style="margin-top:22px">
+        <div class="label">// visit</div>
+        <div class="serif" style="font-size:17px;color:var(--ink);margin-top:6px;line-height:1.35">SensiLab Building G, Monash University Caulfield Campus</div>
+        <div style="font-size:12px;color:var(--ink-soft);margin-top:2px">Hours: Tue–Fri · 10:00–18:00</div>
+      </div>
+    </div>
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+    <div>
+      <div class="label" style="margin-bottom:10px">// social.yaml</div>
+<pre class="yaml"><span class="k">scholar</span>:  <a href="https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" style="color:inherit"><span class="v">"Krol, S.J."</span></a>
+<span class="k">github</span>:   <a href="https://github.com/sjkrol" target="_blank" rel="noopener" style="color:inherit"><span class="v">"@sjkrol"</span></a>
+<span class="k">linkedin</span>: <a href="https://www.linkedin.com/in/stephen-james-krol/" target="_blank" rel="noopener" style="color:inherit"><span class="v">"stephen-james-krol"</span></a>
+<span class="k">city</span>:     <span class="v">"Melbourne, AU"</span>
+<span class="k">timezone</span>: <span class="v">"AEDT (UTC+11)"</span></pre>
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-    <script src="./publications-data.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('recent-publications');
-            if (!container || !Array.isArray(publicationsData)) return;
+      <div style="margin-top:22px">
+        <div class="label" style="margin-bottom:10px">// currently open to</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:13px;line-height:1.95;color:var(--ink-soft)">
+          <li><span class="accent">→</span> Research collaborations in ML + creative practice</li>
+          <li><span class="accent">→</span> Honours / masters supervision (2026)</li>
+          <li><span class="accent">→</span> Invited talks &amp; workshops</li>
+          <li><span class="accent">→</span> Studio &amp; residency conversations</li>
+        </ul>
+      </div>
 
-            const recentPublications = publicationsData.slice(0, 3);
-            container.innerHTML = '';
+      <div style="margin-top:22px;font-size:11px;color:var(--ink-fade)">
+        <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~</span><span class="user">$</span> exit</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            recentPublications.forEach(pub => {
-                const pubDiv = document.createElement('div');
-                pubDiv.className = 'publication';
+<!-- ─────────── PROJECT DETAIL ─────────── -->
+<section class="page" data-page="project" data-screen-label="06 Project Detail">
+  <div class="main" id="projectPage">
+    <!-- injected by JS -->
+  </div>
+</section>
 
-                const authors = Array.isArray(pub.authors) ? pub.authors.join(', ') : '';
+</main>
 
-                pubDiv.innerHTML = `
-                    <h3><a href="${pub.url}" target="_blank">${pub.title}</a></h3>
-                    <p class="authors">${authors}</p>
-                    <p class="venue">${pub.venue}</p>
-                `;
+<script>
+// ─────────── Data ───────────
+const PROJECTS = [
+  { id:'bottom-up', active:true,  title:'Guiding Bottom-Up Generative Modelling with Machine Learning', blurb:'Developing a unified framework that uses ML (ViTs) to guide the emergent behaviour of agent-based generative systems toward designer-specified outcomes.', tags:['Generative','Agent-based','ML'] },
+  { id:'arch',      active:true,  title:'Exploring the Role of AI in Architecture', blurb:'How do architects actually want to collaborate with generative tools? A practice-led field investigation into AI in early architectural ideation.', tags:['HCI','Architecture','Qualitative'] },
+  { id:'rhapsody',  active:false, title:'Rhapsody Refiner: A Deep Learning Symbolic Music Variator', blurb:'A MusicBERT-based variation system built for and with practising musicians to support creative ownership rather than replacing the musician.', tags:['Music','Transformer','Tool'] },
+  { id:'ai-mus',    active:false, title:'Designing AI Tools for Practising Musicians', blurb:'Co-design fieldwork with 13 working musicians on how AI fits into rehearsal and composition practice.', tags:['HCI','Music','Co-design'] },
+  { id:'ar-var',    active:false, title:'Creative Discovery with AR-VAR-Diffusion', blurb:'Combining AR-VAE-Diffusion for controllable high-fidelity image generation with Quality-Diversity Search for diverse creative exploration.', tags:['Diffusion','VAE','Generative'] },
+  { id:'sounds',    active:false, title:'Accessible Soundscapes for Visual Art', blurb:'Automatic musical soundscapes to enhance gallery accessibility for blind and low-vision visitors, evaluated with 10 BLV participants.', tags:['Accessibility','Audio','HCI'] },
+];
 
-                container.appendChild(pubDiv);
-            });
-        });
-    </script>
-    <script src="./site.js"></script>
+const PUBS = [
+  { year:2025, venue:'NeurIPS Cr. AI', title:'Supporting Creative Ownership through Deep Learning-Based Music Variation',                                                              authors:'S. Krol, M. Llano, J. McCormack',           tags:['Music','HCI'],              url:'https://openreview.net/forum?id=k9HOf7NBLp' },
+  { year:2025, venue:'CHI',            title:'Exploring the Needs of Practising Musicians in Co-Creative AI Through Co-Design',                                                       authors:'S. Krol, M. Llano, M. Loor Paredes',       tags:['HCI','Music'],              url:'https://dl.acm.org/doi/full/10.1145/3706598.3713894' },
+  { year:2024, venue:'CREAI/ECAI',     title:'From Simple to Complex: Extending the Generative Capabilities of Attribute-Based Latent Space Regularization through AR-VAE-Diffusion', authors:'S. Krol, A. Sood, M. Llano',               tags:['Generative','Diffusion'],   url:'https://ceur-ws.org/Vol-3810/paper3.pdf' },
+  { year:2024, venue:'ICCC',           title:'Design Considerations for Automatic Musical Soundscapes of Visual Art for People with Blindness or Low Vision',                          authors:'S. Krol, M. Llano, M. Butler, C. Goncu',   tags:['Accessibility','Audio'],    url:'https://computationalcreativity.net/iccc24/papers/ICCC24_paper_103.pdf' },
+  { year:2024, venue:'EvoMUSART',      title:'No Longer Trending on Artstation: Prompt Analysis of Generative AI Art',                                                                authors:'J. McCormack, M. Llano, S. Krol, N. Rajcic',tags:['Generative','Text-Image'], url:'https://link.springer.com/chapter/10.1007/978-3-031-56992-0_18' },
+  { year:2023, venue:'SIGGRAPH Asia',  title:'Infinite Colours',                                                                                                                      authors:'X. Ho, S. Krol',                            tags:['Generative','Art'],         url:'https://dl.acm.org/doi/pdf/10.1145/3610537' },
+  { year:2023, venue:'GECCO',          title:'Creative Discovery using Quality-Diversity Search',                                                                                      authors:'J. McCormack, C. Cruz Gambardella, S. Krol', tags:['Generative','Evolution'],  url:'https://dl.acm.org/doi/abs/10.1145/3583133.3590567' },
+  { year:2023, venue:'EvoMUSART',      title:'Is Writing Prompts Really Making Art?',                                                                                                 authors:'J. McCormack et al.',                       tags:['Generative','Art'],         url:'https://link.springer.com/chapter/10.1007/978-3-031-29956-8_13' },
+  { year:2022, venue:'EvoMUSART',      title:'Towards the Generation of Musical Explanations with GPT-3',                                                                             authors:'S. Krol, M. Llano, J. McCormack',           tags:['Music','NLP'],              url:'https://link.springer.com/chapter/10.1007/978-3-031-03789-4_9' },
+  { year:2021, venue:'ICCC',           title:'Framing through Music: A Pilot Study',                                                                                                  authors:'S. Krol, M. Llano, C. Goncu',               tags:['Music','Accessibility'],    url:'https://computationalcreativity.net/iccc21/wp-content/uploads/2021/09/ICCC_2021_paper_130.pdf' },
+];
+
+const TEACH = [
+  { code:'FIT9136', title:'Introduction to Python Programming', term:'S1 · 2026', role:'Tutor',
+    blurb:'Introduces programming fundamentals using Python: control structures, built-in and complex datatypes, mechanisms for modularity, basic libraries, and good programming practices.' },
+  { code:'FIT2014', title:'Theory of Computation',              term:'S2 · 2022', role:'Tutor',
+    blurb:'Formal languages, models of computation, and complexity. FSA, regular expressions, grammars, pushdown automata, Turing machines, P/NP, NP-completeness.' },
+];
+
+// ─────────── Render ───────────
+const isMobile = () => matchMedia('(max-width: 760px)').matches;
+const el = (html) => { const d = document.createElement('div'); d.innerHTML = html.trim(); return d.firstElementChild; };
+
+// Home project rows
+(function(){
+  const tbl = document.getElementById('homeTable');
+  PROJECTS.forEach((p, i) => {
+    const status = p.active ? '<span class="status-active">● active</span>' : '<span class="status-done">○ done</span>';
+    const tags = p.tags.join(' · ');
+    const row = el(`<div class="row body proj-cols ${i%2 ? 'alt' : ''}">
+      <span class="dim">${String(i+1).padStart(2,'0')}</span>
+      <span>${status}</span>
+      <span style="color:var(--ink)">${p.title}</span>
+      <span class="accent2" style="font-size:11px">${tags}</span>
+      <span class="accent" style="text-align:right">→</span>
+    </div>`);
+    row.innerHTML += `<div class="m-stack">
+      <div class="m-row"><span class="m-k">#${String(i+1).padStart(2,'0')}</span><span>${status}</span></div>
+      <div class="m-title">${p.title}</div>
+      <div class="m-sub">${p.blurb}</div>
+      <div class="m-foot"><span class="accent2">${tags}</span><span class="accent">open →</span></div>
+    </div>`;
+    tbl.appendChild(row);
+  });
+})();
+
+// Research cards
+(function(){
+  const wrap = document.getElementById('researchCards');
+  PROJECTS.forEach((p, i) => {
+    wrap.appendChild(el(`<div class="card ${p.active ? 'active' : ''}">
+      <div class="card-meta">
+        <span class="lbl" style="color:${p.active ? 'var(--accent)' : 'var(--ink-fade)'}">./proj_${String(i+1).padStart(2,'0')}</span>
+        <span class="lbl" style="color:${p.active ? 'var(--accent)' : 'var(--ink-fade)'}">${p.active ? '● active' : '○ shipped'}</span>
+      </div>
+      <h3>${p.title}</h3>
+      <p>${p.blurb}</p>
+      <div class="card-foot">
+        <span class="accent2">${p.tags.join(' · ')}</span>
+        <span class="accent">open →</span>
+      </div>
+    </div>`));
+  });
+})();
+
+// Publications
+(function(){
+  const tbl = document.getElementById('pubTable');
+  const filters = document.getElementById('pubFilters');
+  const allTags = [...new Set(PUBS.flatMap(p => p.tags))];
+  allTags.forEach(t => filters.appendChild(el(`<span class="chip" data-tag="${t}">${t}</span>`)));
+
+  function render(tag){
+    tbl.querySelectorAll('.row.body').forEach(n => n.remove());
+    PUBS.forEach((p, i) => {
+      if (tag !== 'all' && !p.tags.includes(tag)) return;
+      const row = el(`<div class="row body pub-cols ${i%2 ? 'alt' : ''}">
+        <span class="accent" style="font-size:14px">${p.year}</span>
+        <span class="accent2" style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;padding-top:3px">${p.venue}</span>
+        <div>
+          <div class="pub-title">${p.title}</div>
+          <div class="pub-auth">${p.authors}</div>
+        </div>
+        <span style="font-size:11px;color:var(--ink-soft);padding-top:3px">${p.tags.join(' · ')}</span>
+        <div class="pub-act">
+          <a href="${p.url}" target="_blank" rel="noopener">pdf</a><span class="sep">·</span><span style="color:var(--ink-fade)">bib</span>
+        </div>
+      </div>`);
+      row.innerHTML += `<div class="m-stack">
+        <div class="m-row"><span class="m-k">${p.year} · ${p.venue}</span><a href="${p.url}" target="_blank" rel="noopener" class="accent" style="font-size:11px">pdf</a></div>
+        <div class="m-title">${p.title}</div>
+        <div class="m-sub" style="font-style:italic">${p.authors}</div>
+        <div class="m-foot"><span class="accent2">${p.tags.join(' · ')}</span></div>
+      </div>`;
+      tbl.appendChild(row);
+    });
+  }
+  render('all');
+
+  filters.addEventListener('click', e => {
+    const chip = e.target.closest('.chip'); if (!chip) return;
+    filters.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+    chip.classList.add('on');
+    render(chip.dataset.tag);
+  });
+})();
+
+// Teaching
+(function(){
+  const tbl = document.getElementById('teachTable');
+  TEACH.forEach((t, i) => {
+    const row = el(`<div class="row body teach-cols ${i%2 ? 'alt' : ''}">
+      <span class="accent">${t.code}</span>
+      <span class="accent2" style="font-size:11px">${t.term}</span>
+      <div>
+        <div class="teach-title">${t.title}</div>
+        <div class="teach-note">${t.blurb}</div>
+      </div>
+      <span class="role-tag">${t.role}</span>
+      <span class="accent" style="text-align:right">→</span>
+    </div>`);
+    row.innerHTML += `<div class="m-stack">
+      <div class="m-row"><span class="m-k">${t.code} · ${t.term}</span><span class="accent" style="font-size:11px">${t.role}</span></div>
+      <div class="m-title">${t.title}</div>
+      <div class="m-sub">${t.blurb}</div>
+    </div>`;
+    tbl.appendChild(row);
+  });
+})();
+
+// ─────────── Mobile row visibility toggle ───────────
+const styleEl = document.createElement('style');
+styleEl.textContent = `
+  .tbl .row.body > .m-stack{display:none}
+  @media (max-width: 960px){
+    .tbl .row.body > span, .tbl .row.body > div:not(.m-stack){display:none !important}
+    .tbl .row.body > .m-stack{display:block}
+  }
+`;
+document.head.appendChild(styleEl);
+
+// ─────────── Project detail content ───────────
+const PROJECT_DETAIL = {
+  'bottom-up': {
+    title: 'Guiding Bottom-Up Generative Modelling with Machine Learning',
+    sub: 'A unified framework using machine learning to translate design intent into controlled emergent behaviour in agent-based and multi-agent generative systems.',
+    meta: [ ['role','Research Lead'], ['status','In progress'], ['focus','Generative Modelling · ML-guided Design'], ['collab','Monash · SensiLab'] ],
+    tags: ['Generative','Agent-based','ML'],
+    overview: [
+      'This project aims to develop a unified computational design framework that guides the emergent, bottom-up behaviour of generative systems — such as agent-based and multi-agent models — through machine learning-driven, top-down control.',
+      'By training deep learning models (e.g., Vision Transformers) to map high-level, design-centred criteria to low-level generative parameters, the framework conditions and directs emergent outcomes. This enables designers to intuitively navigate and control expansive generative design spaces, allowing top-down intention to inform bottom-up processes. <em>Publications and code will be posted here when available.</em>'
+    ],
+    approachLede: 'An initial proof-of-concept uses a parametric Harmongraph system where a Vision Transformer ranks generations against specific criteria, providing a fitness signal for evolutionary search.',
+    archItems: [
+      { tag:'01', title:'Harmongraph System',  body:'A parametric generative system producing complex visual patterns from sine-wave combinations, used as the initial testbed for the ML-guided design framework.' },
+      { tag:'02', title:'ViT-Based Ranking',   body:'A Vision Transformer (ViT) is trained to rank generated designs based on designer-specified criteria, providing a differentiable fitness signal for the evolutionary search process.' },
+      { tag:'03', title:'Evolutionary Search', body:'Designs are evolved using ViT fitness scores as guidance, iteratively discovering parameter settings that produce outputs matching the designer\'s goals.' },
+      { tag:'04', title:'Top-Down Control',    body:'Machine learning acts as a translator of design intent: high-level criteria map to low-level generative parameters, redefining AI\'s role from stylistic automation to active guidance of emergent systems.' },
+    ],
+  },
+
+  'arch': {
+    title: 'Exploring the Role of AI in Architecture',
+    sub: 'Investigating how architects want to collaborate with generative AI tools during early-stage iterative ideation.',
+    meta: [ ['role','Research Lead'], ['status','In progress'], ['focus','AI · Architecture · Design Tools'], ['collab','Monash · SensiLab'] ],
+    tags: ['HCI','Architecture','Qualitative'],
+    overview: [
+      'Recent reports highlight the growing impact of AI on architectural design, from generative design tools to predictive modelling. However, within academia, the study of AI in architectural practice is limited, with most work focusing on design as a whole.',
+      'This project explores how architects use AI in the early stages of design, focusing on iterative ideation and understanding what is needed from modern tools to support their practice. The project is currently in its early stages — this page will be updated as the research progresses.'
+    ],
+  },
+
+  'rhapsody': {
+    title: 'Rhapsody Refiner',
+    sub: 'A deep-learning symbolic music variator that supports creative ownership rather than replacing the musician.',
+    meta: [ ['role','Research Lead / PhD'], ['status','Completed · 2024'], ['focus','Music AI · Deep Learning · Creative Tools'], ['collab','Monash · SensiLab'], ['venues','NeurIPS Creative AI 2025'] ],
+    tags: ['Music','Transformer','Tool'],
+    overview: [
+      'This project investigates the design and evaluation of a deep learning-based music variation system that supports <em>creative ownership</em> and active co-creation rather than replacing the musician. The central focus is preserving personal ownership and artistic identity in AI-assisted composition.',
+      'Rather than generating complete songs from prompts, this work explores how AI can extend and vary a musician\'s own ideas through fine-grained control over musical attributes, using masked prediction with MusicBERT. The primary users are <strong>practising musicians</strong> — songwriters, producers, jazz musicians, composers, and instrumentalists.'
+    ],
+    rqs: [
+      'How can AI systems support musicians while preserving creative ownership?',
+      'How does a variation-based AI system function in ecological (real-world) composition settings?',
+      'What tensions arise between technological capability and artistic identity?',
+      'How can masked prediction enable controllable variation with strict attribute control?'
+    ],
+    approachLede: 'Rhapsody Refiner uses MusicBERT — a bidirectional transformer for symbolic music — combined with masked token prediction to enable controllable music variation.',
+    archItems: [
+      { tag:'01', title:'Octuple Encoding',        body:'Each MIDI note is represented by 8 attributes (bar, instrument, pitch, position, velocity, duration, time signature, key), enabling attribute-level control without entanglement.' },
+      { tag:'02', title:'Masked Token Prediction', body:'The system masks selected note attributes and predicts them autoregressively using MusicBERT. Masking is governed by a variation parameter determining how many notes are modified.' },
+      { tag:'03', title:'Strict Attribute Control', body:'Users selectively vary pitch, beat placement, beat span, and dynamics. Only explicitly selected attributes are masked and predicted.' },
+      { tag:'04', title:'Logit Filtering',          body:'Ensures correct token types, with optional pitch-range constraints and optional key-fixing via soft scaling.' }
+    ],
+    evalText: 'Eight practising musicians (songwriters, jazz, producers) used Rhapsody Refiner for <strong>four weeks</strong> to compose a song. They kept reflective journals; system logs recorded usage; post-study semi-structured interviews were conducted. Data was analysed via inductive thematic analysis, prioritising ecological validity over lab control.',
+    findings: [
+      { tag:'finding 01', title:'A tool for moments, not complete ideas', body:'Participants rarely used full variations — they extracted small moments that sparked inspiration. The system worked as a spark generator, not a finished-composition engine.' },
+      { tag:'finding 02', title:'Strong creative ownership',              body:'Because the system depends on the musician\'s input and refinement, ownership remained human-centred. Participants felt full control over compositional direction.' },
+      { tag:'finding 03', title:'Imperfection drove co-creation',         body:'Messy outputs forced musicians to filter, refine, and shape — reinforcing authorship. Tools that require skill may better support practising musicians.' },
+      { tag:'finding 04', title:'Identity &amp; humanity in music',       body:'Participants were uncomfortable with prompt-based systems that threatened their sense of worth. Variation-based design avoided this by requiring human seed material.' }
+    ],
+    links: [
+      { title:'NeurIPS Creative AI 2025 · Paper',       sub:'openreview.net/forum?id=k9HOf7NBLp',        action:'read →',  url:'https://openreview.net/forum?id=k9HOf7NBLp' },
+      { title:'SensiLab/MusicVariationBert · Code',     sub:'github.com/SensiLab/MusicVariationBert',    action:'clone →', url:'https://github.com/SensiLab/MusicVariationBert' }
+    ]
+  },
+
+  'ai-mus': {
+    title: 'Designing AI Tools for Practising Musicians',
+    sub: 'A co-design case study with 13 practising musicians exploring how AI can be meaningfully integrated into composition and rehearsal practice.',
+    meta: [ ['role','Research Lead / PhD'], ['status','Completed · 2024'], ['focus','Co-creative AI · Music · HCI'], ['collab','Monash · SensiLab'], ['venues','CHI 2025 · NeurIPS Creative AI 2025'] ],
+    tags: ['HCI','Music','Co-design'],
+    overview: [
+      'This project investigates how co-creative AI systems for music composition can be designed <em>in collaboration</em> with practising musicians. Rather than evaluating a finished AI tool, this work takes a co-design approach to identify the needs, values, and concerns of practising musicians regarding AI in music.',
+      'The research involves 13 musicians across two workshops and a two-week ecological evaluation, using the insights gathered to develop a musical AI variation tool alongside the musicians themselves.'
+    ],
+    rqs: [
+      'What role could co-creative AI meaningfully play in practising musicians\' workflows?',
+      'How do practising musicians perceive AI as collaborator vs. tool?',
+      'What design features are required for AI systems to align with musicians\' creative practices?',
+      'How can co-design methodologies help uncover deeper needs beyond usability feedback?'
+    ],
+    approachLede: 'A co-design case study with 13 practising musicians across two workshops and a two-week ecological evaluation, iteratively developing a MusicBERT-based variation tool.',
+    archItems: [
+      { tag:'01', title:'Workshop 1 · Perceptions of AI',  body:'Musicians composed a piece beforehand, then engaged in human-human and human-AI collaboration tasks using Music Transformer. Strong resistance emerged to framing AI as a collaborator; openness to AI as a variation tool.' },
+      { tag:'02', title:'Workshop 2 · Variation Tool Design', body:'Musicians tested a prototype variation system, confirming variation is most valuable during ideation and should support control over pitch, rhythm, and harmony, and integrate into DAWs.' },
+      { tag:'03', title:'MusicBERT System Design',         body:'Based on workshop insights, a new system was developed using MusicBERT with Octuple encoding (8 note attributes). Users mask selected attributes; the model predicts replacements — more masking creates more variation.' },
+      { tag:'04', title:'Two-Week Ecological Evaluation',  body:'Six musicians used the system in their own creative environments, keeping reflective journals and concluding with a focus group. Outputs were primarily used as ideation sparks — filtered, refined, and chained iteratively.' },
+    ],
+    findings: [
+      { tag:'finding 01', title:'AI Tool vs. AI Collaborator',        body:'Musicians strongly resisted AI being framed as a collaborator, preferring terminology that positions it as a creative tool or idea generator.' },
+      { tag:'finding 02', title:'Ownership of the creative process',  body:'Musicians value maintaining authorship and decision-making authority, with AI supporting ideation rather than automating full compositions.' },
+      { tag:'finding 03', title:'Variation as a productive model',    body:'Variation generation encourages exploration, disrupts habitual compositional patterns, and produces unexpected ideas without replacing initial authorship.' },
+      { tag:'finding 04', title:'Terminology gap',                    body:'A disconnect exists between MIDI-based machine representation and traditional music terminology — parameters should be translated into musician-friendly language.' },
+      { tag:'finding 05', title:'Musical background influences needs', body:'Drummers, electronic musicians, and traditionally trained musicians prefer different controls, indicating no universal musician profile for AI tool design.' },
+      { tag:'finding 06', title:'DAW integration is critical',        body:'Integration into existing digital audio workstations and practical deployment considerations are critical for real-world adoption by practising musicians.' },
+    ],
+    links: [
+      { title:'CHI 2025 · Co-Design Paper (Honourable Mention)', sub:'dl.acm.org/doi/full/10.1145/3706598.3713894',    action:'read →',  url:'https://dl.acm.org/doi/full/10.1145/3706598.3713894' },
+      { title:'NeurIPS Creative AI 2025 · Paper',                sub:'openreview.net/forum?id=k9HOf7NBLp',             action:'read →',  url:'https://openreview.net/forum?id=k9HOf7NBLp' },
+      { title:'CHI 2025 · Presentation Video',                   sub:'dl.acm.org/doi/suppl/10.1145/3706598.3713894',  action:'watch →', url:'https://dl.acm.org/doi/suppl/10.1145/3706598.3713894/suppl_file/pn4114-talk-video.mp4' },
+    ]
+  },
+
+  'ar-var': {
+    title: 'Creative Discovery with AR-VAR-Diffusion',
+    sub: 'Combining fine-grained generative control (AR-VAE-Diffusion) with diversity-aware exploration (Quality-Diversity Search) for AI-assisted creative discovery.',
+    meta: [ ['role','Research Lead / PhD'], ['status','Completed · 2024'], ['focus','Generative Models · Diffusion · Creative AI'], ['collab','Monash · SensiLab'], ['venues','GECCO 2023 · CREAI/ECAI 2024'] ],
+    tags: ['Diffusion','VAE','Generative'],
+    overview: [
+      'This project investigates how AI systems can better support creative exploration by combining <em>fine-grained controllability</em> (Attribute-Regularised VAE-Diffusion) with <em>diversity-aware search</em> (Quality-Diversity Search).',
+      'The overarching goal is to move beyond black-box generative systems toward tools that allow artists and designers to explore large creative spaces, control meaningful aesthetic attributes, and discover multiple high-quality alternatives rather than a single optimal output.'
+    ],
+    rqs: [
+      'How can we introduce meaningful, fine-grained control into deep generative models for complex images?',
+      'How can we explore creative design spaces in a way that preserves both quality and diversity?',
+      'How can AI systems support creative discovery rather than merely optimisation?'
+    ],
+    approachLede: 'Two complementary systems: AR-VAE-Diffusion for controllable high-fidelity generation, and a Quality-Diversity Search framework for diverse creative exploration of generative design spaces.',
+    archItems: [
+      { tag:'01', title:'AR-VAE-Diffusion Architecture', body:'Combines an Attribute-Regularised VAE (ALSR) that embeds interpretable attributes into specific latent dimensions with a DDPM that enhances generative quality. Training is two-stage: first the AR-VAE, then the diffusion model conditioned on VAE reconstructions.' },
+      { tag:'02', title:'Datasets &amp; Evaluation',     body:'Tested on the Curl Noise Dataset (68k abstract line drawings, attributes: pixel density and generation size) and the Kaggle Abstract Art Dataset (28k abstract paintings, attributes: colour diversity and structural complexity).' },
+      { tag:'03', title:'Quality-Diversity Search',      body:'A four-stage pipeline (Generation, Evaluation, Classification, Breeding) applied to a 14-parameter agent-based line drawing system. Fitness: structural complexity (r = 0.72 with human preference). Diversity: ratio of populated VAE latent clusters.' },
+      { tag:'04', title:'MAP-Elites Implementation',     body:'The design space is partitioned into clusters; each maintains its elite (highest fitness). Mutation-based breeding explores nearby space. QD Search produced significantly more diverse and high-quality outputs than fitness-only genetic search.' },
+    ],
+    findings: [
+      { tag:'finding 01', title:'Controllability extends to high-fidelity images', body:'AR-VAE-Diffusion preserves attribute control while dramatically improving image quality over standard VAE, broadening the applicability of attribute-based latent space regularisation to complex artistic datasets.' },
+      { tag:'finding 02', title:'QD beats fitness-only search',                    body:'Fitness-only search collapses toward visually similar solutions, while Quality-Diversity Search maintains diverse, high-quality alternatives that better mirror real creative exploration.' },
+      { tag:'finding 03', title:'Attribute design is crucial',                     body:'Simpler attributes (e.g., pixel density) produce clearer latent control, while complex attributes reduce disentanglement. Attribute definition shapes emergent generative behaviours.' },
+      { tag:'finding 04', title:'AI as co-creative partner',                       body:'The systems preserve some unpredictability, introduce new elements during manipulation, and balance user control with generative agency — supporting discovery rather than optimisation.' },
+      { tag:'finding 05', title:'Trade-offs &amp; limitations',                    body:'Diffusion adds computational cost, simple fitness metrics bias results toward measurable aesthetics, and latent reduction techniques (PCA, t-SNE) may distort cluster boundaries.' },
+    ],
+    links: [
+      { title:'GECCO 2023 · Creative Discovery Paper',      sub:'dl.acm.org/doi/abs/10.1145/3583133.3590567', action:'read →', url:'https://dl.acm.org/doi/abs/10.1145/3583133.3590567' },
+      { title:'CREAI/ECAI 2024 · AR-VAE-Diffusion Paper',   sub:'ceur-ws.org/Vol-3810/paper3.pdf',            action:'read →', url:'https://ceur-ws.org/Vol-3810/paper3.pdf' },
+    ]
+  },
+
+  'sounds': {
+    title: 'Accessible Soundscapes for Visual Art',
+    sub: 'Automatically generated musical soundscapes that enhance the aesthetic experience of visual art for blind and low-vision gallery visitors.',
+    meta: [ ['role','Lead Researcher / Honours'], ['status','Completed · 2023'], ['focus','Accessibility · Generative Soundscapes · Visual Art'], ['collab','Monash · SensiLab'] ],
+    tags: ['Accessibility','Audio','HCI'],
+    overview: [
+      'This project investigates how automatically generated musical soundscapes can enhance access to the <em>aesthetic experience of visual art</em> for people who are blind or have low vision (BLV).',
+      'Traditional museum accessibility tools focus on factual description but often fail to convey the emotional and atmospheric qualities that sighted patrons experience. This work explores whether AI-generated soundscapes can bridge that gap, evaluated with 10 BLV participants in a qualitative study.'
+    ],
+    rqs: [
+      'How do automatic musical soundscapes affect BLV users\' aesthetic experience of artworks?',
+      'What system and interaction design requirements are needed to ensure soundscapes are meaningful, accurate, and enjoyable?'
+    ],
+    approachLede: 'A two-stage prototype — emotion-based music generation and contextual sound effects — evaluated in a 33-participant pilot study, then an in-depth qualitative study with 10 BLV participants.',
+    archItems: [
+      { tag:'01', title:'Emotion-Based Music Generation', body:'A deep learning classifier predicts the painting\'s perceived emotion, mapped onto the valence-arousal model. Magenta\'s Music Transformer then generates symbolic music matching that emotional tone from an annotated MIDI database.' },
+      { tag:'02', title:'Contextual Sound Effects',       body:'YOLOv3 detects foreground objects in the painting; corresponding sound effects are retrieved from a custom database and mixed into the musical output to convey scene-setting and object awareness beyond emotion.' },
+      { tag:'03', title:'Pilot Study',                   body:'33 participants (mostly sighted, 5 low vision) validated the prototype: emotional accuracy 60%, foreground sound effect accuracy 92%. Positive results motivated the in-depth study with BLV users.' },
+      { tag:'04', title:'In-Depth Qualitative Study',    body:'10 BLV participants (5 blind, 5 low vision) engaged in semi-structured interviews after interacting with the system, exploring emotional impact, contextual accuracy, and preferences for combining soundscapes with traditional accessibility methods.' },
+    ],
+    findings: [
+      { tag:'finding 01', title:'Immersive emotional engagement', body:'Musical soundscapes added a more immersive, emotionally engaging layer than description alone, helping build stronger connections to artworks through mood and atmosphere.' },
+      { tag:'finding 02', title:'Support narrative storytelling', body:'Participants wanted soundscapes that conveyed the narrative of the painting — not just emotional tone but also story and scene context that description alone could not capture.' },
+      { tag:'finding 03', title:'Improve contextual accuracy',   body:'Both musical emotion matching and foreground sound effects need higher accuracy; mismatches between the painting\'s content and generated sounds broke immersion and reduced trust.' },
+      { tag:'finding 04', title:'Customisation is important',    body:'BLV users have diverse needs — allowing adjustment of music type, sound effect prominence, and playback style would significantly improve the experience for different users.' },
+      { tag:'finding 05', title:'Complement other methods',      body:'Soundscapes are most effective when used alongside audio descriptions and other accessibility tools, not as a standalone replacement for existing accessibility infrastructure.' },
+    ],
+    links: [
+      { title:'ICCC 2024 · Paper',                  sub:'computationalcreativity.net/iccc24',           action:'read →',   url:'https://computationalcreativity.net/iccc24/papers/ICCC24_paper_103.pdf' },
+      { title:'Vision Australia · Interview',       sub:'omny.fm/shows/vision-australia-radio',         action:'listen →', url:'https://omny.fm/shows/vision-australia-radio/focal-point-30-jun-2021' },
+      { title:'Generated Soundscapes · Playlist',  sub:'youtube.com/playlist',                         action:'listen →', url:'https://www.youtube.com/playlist?list=PLJXhSHZOX4QwkaqoS-o-cTdc90dM_aFKh' },
+    ]
+  },
+};
+
+function renderProject(id){
+  const p = PROJECTS.find(x => x.id === id);
+  if (!p) return;
+  const d = PROJECT_DETAIL[id] || null;
+  const title = (d && d.title) || p.title;
+  const sub = (d && d.sub) || p.blurb;
+  const meta = (d && d.meta) || [
+    ['status', p.active ? 'In progress' : 'Completed'],
+    ['focus', p.tags.join(' · ')],
+    ['collab','Monash · SensiLab'],
+  ];
+  const idx = PROJECTS.indexOf(p);
+  const prev = PROJECTS[(idx - 1 + PROJECTS.length) % PROJECTS.length];
+  const next = PROJECTS[(idx + 1) % PROJECTS.length];
+
+  const metaRows = meta.map(([k,v]) => `<div class="kv"><span>${k}</span><span>${v}</span></div>`).join('');
+
+  const rqs = d && d.rqs ? `
+    <div class="proj-section">
+      <h3><span class="num">// 02</span>Research questions</h3>
+      <ol class="rq-list">${d.rqs.map(q => `<li>${q}</li>`).join('')}</ol>
+    </div>` : '';
+
+  const approach = d && d.archItems ? `
+    <div class="proj-section">
+      <h3><span class="num">// 03</span>Approach</h3>
+      <div class="proj-body"><p>${d.approachLede}</p></div>
+      <div class="findings" style="margin-top:18px">
+        ${d.archItems.map(a => `<div class="finding"><div class="tag">${a.tag}</div><h4>${a.title}</h4><p>${a.body}</p></div>`).join('')}
+      </div>
+    </div>` : '';
+
+  const evalSec = d && d.evalText ? `
+    <div class="proj-section">
+      <h3><span class="num">// 04</span>Evaluation</h3>
+      <div class="proj-body"><p>${d.evalText}</p></div>
+    </div>` : '';
+
+  const findings = d && d.findings ? `
+    <div class="proj-section">
+      <h3><span class="num">// 05</span>Key outcomes</h3>
+      <div class="findings">${d.findings.map(f => `<div class="finding"><div class="tag">${f.tag}</div><h4>${f.title}</h4><p>${f.body}</p></div>`).join('')}</div>
+    </div>` : '';
+
+  const links = d && d.links ? `
+    <div class="proj-section">
+      <h3><span class="num">// 06</span>Publications &amp; code</h3>
+      <div class="links-block">
+        ${d.links.map(l => `<a class="link-row" href="${l.url}" target="_blank" rel="noopener"><div><div class="lk-title">${l.title}</div><div class="lk-sub">${l.sub}</div></div><span class="accent">${l.action}</span></a>`).join('')}
+      </div>
+    </div>` : '';
+
+  const placeholder = !d ? `
+    <div class="proj-section">
+      <h3><span class="num">// 02</span>Overview</h3>
+      <div class="proj-body"><p>${p.blurb}</p><p style="color:var(--ink-fade);font-style:italic">Full writeup coming soon. See the research index for the current set of projects.</p></div>
+    </div>` : '';
+
+  const overviewBlock = d && d.overview ? `
+    <div class="proj-section">
+      <h3><span class="num">// 01</span>Overview</h3>
+      <div class="proj-body">${d.overview.map(pp=>`<p>${pp}</p>`).join('')}</div>
+    </div>` : '';
+
+  document.getElementById('projectPage').innerHTML = `
+    <span class="proj-back" onclick="setTab('research')">← back to research</span>
+    <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/research/${p.id}</span><span class="user">$</span> cat README.md</div>
+    <div class="proj-head">
+      <div>
+        <div class="label" style="color:${p.active ? 'var(--accent)' : 'var(--ink-fade)'};margin-top:10px">${p.active ? '● active' : '○ shipped'} · ${p.tags.join(' · ')}</div>
+        <h2 class="proj-title">${title}</h2>
+        <p class="proj-sub">${sub}</p>
+      </div>
+      <div class="proj-meta">
+        <div class="label" style="margin-bottom:10px">// meta</div>
+        ${metaRows}
+      </div>
+    </div>
+    <div class="proj-hero"><span class="cap">hero · ${p.id} · placeholder</span></div>
+    ${overviewBlock}
+    ${placeholder}
+    ${rqs}
+    ${approach}
+    ${evalSec}
+    ${findings}
+    ${links}
+    <div class="nav-strip">
+      <a onclick="openProject('${prev.id}')"><div class="lbl">← previous</div><div class="t">${prev.title}</div></a>
+      <a class="next" onclick="openProject('${next.id}')"><div class="lbl">next →</div><div class="t">${next.title}</div></a>
+    </div>
+  `;
+}
+
+function openProject(id){
+  renderProject(id);
+  setTab('project');
+}
+window.openProject = openProject;
+
+// Wire up clicks on home table rows and research cards
+document.getElementById('homeTable').addEventListener('click', e => {
+  const row = e.target.closest('.row.body');
+  if (!row) return;
+  const i = [...row.parentNode.querySelectorAll('.row.body')].indexOf(row);
+  if (i >= 0) openProject(PROJECTS[i].id);
+});
+document.getElementById('researchCards').addEventListener('click', e => {
+  const card = e.target.closest('.card');
+  if (!card) return;
+  const i = [...card.parentNode.children].indexOf(card);
+  if (i >= 0) openProject(PROJECTS[i].id);
+});
+
+// ─────────── Tab switching ───────────
+const paths = { home:'~', research:'~/research', pub:'~/publications', teaching:'~/teaching', contact:'~/contact', project:'~/research/project' };
+const KEY = 'sjk.tab';
+function setTab(name){
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.tab === name));
+  document.querySelectorAll('.page').forEach(p => p.classList.toggle('on', p.dataset.page === name));
+  document.getElementById('chromePath').textContent = paths[name] || '~';
+  try { localStorage.setItem(KEY, name); } catch(e){}
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => setTab(t.dataset.tab)));
+try { const saved = localStorage.getItem(KEY); if (saved && paths[saved]) setTab(saved); } catch(e){}
+</script>
+
 </body>
 </html>
