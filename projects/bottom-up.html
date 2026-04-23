@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Guiding Bottom-Up Generative Modelling with Machine Learning — Stephen James Krol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<header class="chrome">
+  <div class="prompt">
+    <div class="dots">
+      <span class="dot" style="background:var(--hot)"></span>
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent2)"></span>
+    </div>
+    <span class="dim">sjk@sensilab</span>
+    <span class="dim">:</span>
+    <span class="accent">~/research/bottom-up</span>
+    <span class="soft">$</span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <a class="tab" href="../index.html#home">./~</a>
+    <a class="tab on" href="../index.html#research">./research</a>
+    <a class="tab" href="../index.html#pub">./publications</a>
+    <a class="tab" href="../index.html#teaching">./teaching</a>
+    <a class="tab" href="../index.html#contact">./contact</a>
+  </nav>
+</header>
+
+<main>
+<div class="main">
+  <a class="proj-back" href="../index.html">← back to research</a>
+  <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/research/bottom-up</span><span class="user">$</span> cat README.md</div>
+
+  <div class="proj-head">
+    <div>
+      <div class="label" style="color:var(--accent);margin-top:10px">● active · Generative · Agent-based · ML</div>
+      <h2 class="proj-title">Guiding Bottom-Up Generative Modelling with Machine Learning</h2>
+      <p class="proj-sub">A unified framework using machine learning to translate design intent into controlled emergent behaviour in agent-based and multi-agent generative systems.</p>
+    </div>
+    <div class="proj-meta">
+      <div class="label" style="margin-bottom:10px">// meta</div>
+      <div class="kv"><span>role</span><span>Research Lead</span></div>
+      <div class="kv"><span>status</span><span>In progress</span></div>
+      <div class="kv"><span>focus</span><span>Generative Modelling · ML-guided Design</span></div>
+      <div class="kv"><span>collab</span><span>Monash · SensiLab</span></div>
+    </div>
+  </div>
+
+  <div class="proj-hero"><img src="../images/project1.png" alt="Guiding Bottom-Up Generative Modelling"></div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 01</span>Overview</h3>
+    <div class="proj-body">
+      <p>This project aims to develop a unified computational design framework that guides the emergent, bottom-up behaviour of generative systems — such as agent-based and multi-agent models — through machine learning-driven, top-down control.</p>
+      <p>By training deep learning models (e.g., Vision Transformers) to map high-level, design-centred criteria to low-level generative parameters, the framework conditions and directs emergent outcomes. This enables designers to intuitively navigate and control expansive generative design spaces, allowing top-down intention to inform bottom-up processes. <em>Publications and code will be posted here when available.</em></p>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 03</span>Approach</h3>
+    <div class="proj-body"><p>An initial proof-of-concept uses a parametric Harmongraph system where a Vision Transformer ranks generations against specific criteria, providing a fitness signal for evolutionary search.</p></div>
+    <div class="findings" style="margin-top:18px">
+      <div class="finding"><div class="tag">01</div><h4>Harmongraph System</h4><p>A parametric generative system producing complex visual patterns from sine-wave combinations, used as the initial testbed for the ML-guided design framework.</p></div>
+      <div class="finding"><div class="tag">02</div><h4>ViT-Based Ranking</h4><p>A Vision Transformer (ViT) is trained to rank generated designs based on designer-specified criteria, providing a differentiable fitness signal for the evolutionary search process.</p></div>
+      <div class="finding"><div class="tag">03</div><h4>Evolutionary Search</h4><p>Designs are evolved using ViT fitness scores as guidance, iteratively discovering parameter settings that produce outputs matching the designer's goals.</p></div>
+      <div class="finding"><div class="tag">04</div><h4>Top-Down Control</h4><p>Machine learning acts as a translator of design intent: high-level criteria map to low-level generative parameters, redefining AI's role from stylistic automation to active guidance of emergent systems.</p></div>
+    </div>
+  </div>
+
+  <div class="nav-strip">
+    <a href="sounds.html"><div class="lbl">← previous</div><div class="t">Accessible Soundscapes for Visual Art</div></a>
+    <a class="next" href="arch.html"><div class="lbl">next →</div><div class="t">Exploring the Role of AI in Architecture</div></a>
+  </div>
+</div>
+</main>
+
+</body>
+</html>

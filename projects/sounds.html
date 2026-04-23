@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Accessible Soundscapes for Visual Art — Stephen James Krol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<header class="chrome">
+  <div class="prompt">
+    <div class="dots">
+      <span class="dot" style="background:var(--hot)"></span>
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent2)"></span>
+    </div>
+    <span class="dim">sjk@sensilab</span>
+    <span class="dim">:</span>
+    <span class="accent">~/research/sounds</span>
+    <span class="soft">$</span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <a class="tab" href="../index.html#home">./~</a>
+    <a class="tab on" href="../index.html#research">./research</a>
+    <a class="tab" href="../index.html#pub">./publications</a>
+    <a class="tab" href="../index.html#teaching">./teaching</a>
+    <a class="tab" href="../index.html#contact">./contact</a>
+  </nav>
+</header>
+
+<main>
+<div class="main">
+  <a class="proj-back" href="../index.html">← back to research</a>
+  <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/research/sounds</span><span class="user">$</span> cat README.md</div>
+
+  <div class="proj-head">
+    <div>
+      <div class="label" style="color:var(--ink-fade);margin-top:10px">○ shipped · Accessibility · Audio · HCI</div>
+      <h2 class="proj-title">Accessible Soundscapes for Visual Art</h2>
+      <p class="proj-sub">Automatically generated musical soundscapes that enhance the aesthetic experience of visual art for blind and low-vision gallery visitors.</p>
+    </div>
+    <div class="proj-meta">
+      <div class="label" style="margin-bottom:10px">// meta</div>
+      <div class="kv"><span>role</span><span>Lead Researcher / Honours</span></div>
+      <div class="kv"><span>status</span><span>Completed · 2023</span></div>
+      <div class="kv"><span>focus</span><span>Accessibility · Generative Soundscapes · Visual Art</span></div>
+      <div class="kv"><span>collab</span><span>Monash · SensiLab</span></div>
+    </div>
+  </div>
+
+  <div class="proj-hero"><img src="../images/project4.jpg" alt="Accessible Soundscapes for Visual Art"></div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 01</span>Overview</h3>
+    <div class="proj-body">
+      <p>This project investigates how automatically generated musical soundscapes can enhance access to the <em>aesthetic experience of visual art</em> for people who are blind or have low vision (BLV).</p>
+      <p>Traditional museum accessibility tools focus on factual description but often fail to convey the emotional and atmospheric qualities that sighted patrons experience. This work explores whether AI-generated soundscapes can bridge that gap, evaluated with 10 BLV participants in a qualitative study.</p>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 02</span>Research questions</h3>
+    <ol class="rq-list">
+      <li>How do automatic musical soundscapes affect BLV users' aesthetic experience of artworks?</li>
+      <li>What system and interaction design requirements are needed to ensure soundscapes are meaningful, accurate, and enjoyable?</li>
+    </ol>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 03</span>Approach</h3>
+    <div class="proj-body"><p>A two-stage prototype — emotion-based music generation and contextual sound effects — evaluated in a 33-participant pilot study, then an in-depth qualitative study with 10 BLV participants.</p></div>
+    <div class="findings" style="margin-top:18px">
+      <div class="finding"><div class="tag">01</div><h4>Emotion-Based Music Generation</h4><p>A deep learning classifier predicts the painting's perceived emotion, mapped onto the valence-arousal model. Magenta's Music Transformer then generates symbolic music matching that emotional tone from an annotated MIDI database.</p></div>
+      <div class="finding"><div class="tag">02</div><h4>Contextual Sound Effects</h4><p>YOLOv3 detects foreground objects in the painting; corresponding sound effects are retrieved from a custom database and mixed into the musical output to convey scene-setting and object awareness beyond emotion.</p></div>
+      <div class="finding"><div class="tag">03</div><h4>Pilot Study</h4><p>33 participants (mostly sighted, 5 low vision) validated the prototype: emotional accuracy 60%, foreground sound effect accuracy 92%. Positive results motivated the in-depth study with BLV users.</p></div>
+      <div class="finding"><div class="tag">04</div><h4>In-Depth Qualitative Study</h4><p>10 BLV participants (5 blind, 5 low vision) engaged in semi-structured interviews after interacting with the system, exploring emotional impact, contextual accuracy, and preferences for combining soundscapes with traditional accessibility methods.</p></div>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 05</span>Key outcomes</h3>
+    <div class="findings">
+      <div class="finding"><div class="tag">finding 01</div><h4>Immersive emotional engagement</h4><p>Musical soundscapes added a more immersive, emotionally engaging layer than description alone, helping build stronger connections to artworks through mood and atmosphere.</p></div>
+      <div class="finding"><div class="tag">finding 02</div><h4>Support narrative storytelling</h4><p>Participants wanted soundscapes that conveyed the narrative of the painting — not just emotional tone but also story and scene context that description alone could not capture.</p></div>
+      <div class="finding"><div class="tag">finding 03</div><h4>Improve contextual accuracy</h4><p>Both musical emotion matching and foreground sound effects need higher accuracy; mismatches between the painting's content and generated sounds broke immersion and reduced trust.</p></div>
+      <div class="finding"><div class="tag">finding 04</div><h4>Customisation is important</h4><p>BLV users have diverse needs — allowing adjustment of music type, sound effect prominence, and playback style would significantly improve the experience for different users.</p></div>
+      <div class="finding"><div class="tag">finding 05</div><h4>Complement other methods</h4><p>Soundscapes are most effective when used alongside audio descriptions and other accessibility tools, not as a standalone replacement for existing accessibility infrastructure.</p></div>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <h3><span class="num">// 06</span>Publications &amp; code</h3>
+    <div class="links-block">
+      <a class="link-row" href="https://computationalcreativity.net/iccc24/papers/ICCC24_paper_103.pdf" target="_blank" rel="noopener"><div><div class="lk-title">ICCC 2024 · Paper</div><div class="lk-sub">computationalcreativity.net/iccc24</div></div><span class="accent">read →</span></a>
+      <a class="link-row" href="https://omny.fm/shows/vision-australia-radio/focal-point-30-jun-2021" target="_blank" rel="noopener"><div><div class="lk-title">Vision Australia · Interview</div><div class="lk-sub">omny.fm/shows/vision-australia-radio</div></div><span class="accent">listen →</span></a>
+      <a class="link-row" href="https://www.youtube.com/playlist?list=PLJXhSHZOX4QwkaqoS-o-cTdc90dM_aFKh" target="_blank" rel="noopener"><div><div class="lk-title">Generated Soundscapes · Playlist</div><div class="lk-sub">youtube.com/playlist</div></div><span class="accent">listen →</span></a>
+    </div>
+  </div>
+
+  <div class="nav-strip">
+    <a href="ar-var.html"><div class="lbl">← previous</div><div class="t">Creative Discovery with AR-VAR-Diffusion</div></a>
+    <a class="next" href="bottom-up.html"><div class="lbl">next →</div><div class="t">Guiding Bottom-Up Generative Modelling with Machine Learning</div></a>
+  </div>
+</div>
+</main>
+
+</body>
+</html>

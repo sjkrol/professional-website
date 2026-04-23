@@ -1,195 +1,230 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephen James Krol - Academic Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Stephen James Krol — Research Fellow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
+<link rel="icon" type="image/png" href="images/Logo.png" />
+<link rel="shortcut icon" type="image/png" href="images/Logo.png" />
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="header-text">
-                <h1>Stephen James Krol</h1>
-                <p class="subtitle">Research Fellow in Machine Learning</p>
-                <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
-                    <span class="mobile-menu-toggle-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </button>
-                <nav>
-                    <a href="./index.html" class="active">About</a>
-                    <a href="./research.html">Research</a>
-                    <a href="./publications.html">Publications</a>
-                    <a href="./teaching.html">Teaching</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-            <img src="./images/profile_picture.jpeg" alt="Stephen James Krol" class="profile-pic">
+
+<!-- ─────────── CHROME ─────────── -->
+<header class="chrome">
+  <div class="prompt">
+    <div class="dots">
+      <span class="dot" style="background:var(--hot)"></span>
+      <span class="dot" style="background:var(--accent)"></span>
+      <span class="dot" style="background:var(--accent2)"></span>
+    </div>
+    <span class="dim">sjk@sensilab</span>
+    <span class="dim">:</span>
+    <span class="accent" id="chromePath">~</span>
+    <span class="soft">$</span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <span class="tab on" data-tab="home" role="tab">./~</span>
+    <span class="tab" data-tab="research" role="tab">./research</span>
+    <span class="tab" data-tab="pub" role="tab">./publications</span>
+    <span class="tab" data-tab="teaching" role="tab">./teaching</span>
+    <span class="tab" data-tab="contact" role="tab">./contact</span>
+  </nav>
+</header>
+
+<main id="app">
+
+<!-- ─────────── HOME ─────────── -->
+<section class="page on" data-page="home" data-screen-label="01 Home">
+  <div class="home-grid">
+    <aside class="side">
+      <div class="side-id">
+        <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~</span><span class="user">$</span> whoami</div>
+        <h1 class="whoami">Stephen<br/>James Krol</h1>
+        <div class="role">→ research_fellow</div>
+        <div class="aff">monash.edu/hcc · sensilab</div>
+      </div>
+
+      <div class="side-meta">
+        <div class="kv-label">// status</div>
+        <div class="kv"><span>role</span><span>Research Fellow</span></div>
+        <div class="kv"><span>since</span><span>2026</span></div>
+        <div class="kv"><span>phd</span><span>Monash · AI · 2025</span></div>
+        <div class="kv"><span>lab</span><span>SensiLab</span></div>
+        <div class="kv"><span>city</span><span>Melbourne / AU</span></div>
+
+        <div class="kv-label">// metrics</div>
+        <div class="kv"><span>papers</span><span class="accent2">10</span></div>
+        <div class="kv"><span>cites (scholar)</span><span class="accent2">~190</span></div>
+        <div class="kv"><span>active projects</span><span class="accent2">02</span></div>
+        <div class="kv"><span>ext. collaborators</span><span class="accent2">09</span></div>
+
+        <div class="kv-label">// links</div>
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.9">
+          <div><a href="https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" style="color:inherit">scholar →<span class="accent2" style="margin-left:8px">krol, s.j.</span></a></div>
+          <div><a href="https://github.com/sjkrol" target="_blank" rel="noopener" style="color:inherit">github&nbsp; →<span class="accent2" style="margin-left:8px">@sjkrol</span></a></div>
+          <div><a href="https://www.linkedin.com/in/stephen-james-krol" target="_blank" rel="noopener" style="color:inherit">LinkedIn&nbsp; →<span class="accent2" style="margin-left:8px">Stephen James Krol</span></a></div>
+          <div><a href="mailto:stephen.krol@monash.edu" style="color:inherit">email&nbsp;&nbsp; →<span class="accent2" style="margin-left:8px">stephen.krol@monash.edu</span></a></div>
+          <div><a href="Stephen James Krol Resume.pdf" download style="color:inherit">resume&nbsp; →<span class="accent2" style="margin-left:8px">download .pdf</span></a></div>
         </div>
-    </header>
+      </div>
+    </aside>
 
-    <div class="container">
-        <section id="about">
-            <img src="./images/profile_picture.jpeg" alt="Stephen James Krol" class="profile-pic-mobile">
-            <p class="intro">Research Fellow in the Department of Human-Centered Computing at Monash University, specializing in machine learning and human-computer interaction.</p>
-            <div class="bio">
-                <p>My research focuses on developing machine learning solutions to assist creatives in their practices. I take a human-centered approach to AI, ensuring that the systems I develop are not only technically sound but also solve real problems for working practitioners.</p>
-                <p>Prior to this position, I completed my PhD in Artificial Intelligence at Monash University under the supervision of <a href="https://research.monash.edu/en/persons/jon-mccormack/">Prof. Jon McCormack</a> and <a href="https://profiles.sussex.ac.uk/p640433-maria-llano-rodriguez/about">A/Prof. Teresa Llano</a>.</p>
-                  <p>
-                <strong>Google Scholar – Stephen James Krol</strong><br>
-                View the full list of publications and citation metrics for Stephen James Krol on Google Scholar:
-            </p>
-            
-            <p>
-                <a href="https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">
-                Stephen James Krol Google Scholar Profile
-                </a>
-            </p>
-            
-            <p>
-                https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao
-            </p>
+    <div class="main">
+      <div class="main-mission">
+        <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~</span><span class="user">$</span> cat mission.md</div>
+        <div class="mission">
+          I build <span class="hl">machine learning</span> tools with <em>creative practitioners</em> — to explore the ways AI can <em style="color:var(--ink)">add</em> to creative practice.
+        </div>
+        <p class="lede">Human-Centered Computing, Monash University. Member of SensiLab. Researcher situated between machine learning and human-centered design. Primary domains: music AI, generative modelling, AI-in-architecture. Approach: practice-led, qualitative, tool-making.</p>
+      </div>
 
-            </div>
-            <a href="./research.html">Research Projects →</a>
-        </section>
+      <div class="main-research">
+        <div class="cmd" style="margin-top:28px"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~</span><span class="user">$</span> ls research/ --sort time</div>
 
-        <section id="publications">
-            <h2>Recent Publications</h2>
-            <div id="recent-publications"></div>
-            <a href="./publications.html">All Publications →</a>
-        </section>
+        <div class="tbl" id="homeTable">
+          <div class="row head proj-cols">
+            <span>#</span><span>status</span><span>title</span><span>tags</span><span style="text-align:right">open</span>
+          </div>
+          <!-- injected by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <strong>Email</strong>
-                    <a href="mailto:stephen.krol@monash.edu">stephen.krol@monash.edu</a>
-                </div>
-                <div class="contact-item">
-                    <strong>Office</strong>
-                    SensiLab Building G, Monash University Caulfield Campus
-                </div>
-                <div class="contact-item">
-                    <strong>Office Hours</strong>
-                    Tuesday - Friday<br>10:00 AM - 6:00 PM
-                </div>
-                <div class="contact-item">
-                    <strong>Google Scholar</strong>
-                    <a href="https://scholar.google.com/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank">View Profile →</a>
-                </div>
-                <div class="contact-item">
-                    <strong>LinkedIn</strong>
-                    <a href="https://www.linkedin.com/in/stephen-james-krol/" target="_blank">Connect →</a>
-                </div>
-                <div class="contact-item">
-                    <strong>Github</strong>
-                    <a href="https://github.com/sjkrol" target="_blank">View →</a>
-                </div>
-            </div>
-        </section>
+<!-- ─────────── RESEARCH ─────────── -->
+<section class="page" data-page="research" data-screen-label="02 Research">
+  <div class="main">
+    <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/research</span><span class="user">$</span> ./research --verbose</div>
+    <h2 class="h1" style="font-size:42px;line-height:1;margin:14px 0 8px;color:var(--ink)">Research · <span class="accent">6 projects</span></h2>
+    <p class="lede">A full manifest of current and prior research. Each entry has a project page with methodology, code, and references where available.</p>
+
+    <div class="cards" id="researchCards"></div>
+
+    <div style="margin-top:32px">
+      <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/research</span><span class="user">$</span> git log --oneline --graph</div>
+      <div class="gitlog">
+        <div><span class="y">* 2026</span> <span class="dim">(HEAD)</span> Commenced Fellowship· Monash · Machine Learning · <span class="accent2">latest</span></div>
+        <div><span class="y">* 2025</span> PhD Completed · Monash · AI</div>
+        <div><span class="y">* 2025</span> Supporting Creative Ownership — NeurIPS Creative AI</div>
+        <div><span class="y">* 2025</span> Exploring the Needs of Musicians — CHI · Honourable Mention</div>
+        <div><span class="y">* 2024</span> AR-VAE-Diffusion extended — CREAI/ECAI</div>
+        <div><span class="y">* 2024</span> Accessible Soundscapes — ICCC</div>
+        <div><span class="y">* 2023</span> Infinite Colours — SIGGRAPH Asia Art Gallery</div>
+        <div><span class="y">* 2023</span> Creative Discovery via QD Search — GECCO</div>
+        <div><span class="y">* 2023</span> Is Writing Prompts Really Making Art? — EvoMUSART</div>
+        <div><span class="y">* 2022</span> Musical Explanations with GPT-3 — EvoMUSART</div>
+        <div><span class="y">* 2021</span> Framing through Music — ICCC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PUBLICATIONS ─────────── -->
+<section class="page" data-page="pub" data-screen-label="03 Publications">
+  <div class="main">
+    <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/publications</span><span class="user">$</span> bibtex --all</div>
+    <div style="display:flex;justify-content:space-between;align-items:end;margin-top:14px;flex-wrap:wrap;gap:10px">
+      <h2 class="h1" style="font-size:42px;line-height:1;margin:0;color:var(--ink)">Publications <span class="accent">· 10</span></h2>
+      <div style="font-size:11px;color:var(--ink-fade)">
+        <a href="https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener"><span class="accent2">↗</span> scholar</a>
+      </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Stephen James Krol. All rights reserved.</p>
-    </footer>
-
-    <div class="mobile-menu" id="mobile-menu" hidden>
-        <div class="mobile-menu-panel">
-            <button class="mobile-menu-close" type="button" aria-label="Close">×</button>
-            <nav>
-                <a href="./index.html" class="active">About</a>
-                <a href="./research.html">Research</a>
-                <a href="./publications.html">Publications</a>
-                <a href="./teaching.html">Teaching</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
+    <div class="filters" id="pubFilters">
+      <span class="lbl">filter:</span>
+      <span class="chip on" data-tag="all">all</span>
+      <!-- tag chips injected -->
     </div>
 
-    <script>
-        // Smooth scrolling
-        // Smooth scrolling, but skip links to .html pages
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
+    <div class="tbl" id="pubTable">
+      <div class="row head pub-cols">
+        <span>year</span><span>venue</span><span>title &amp; authors</span><span>tags</span><span style="text-align:right">actions</span>
+      </div>
+      <!-- rows injected -->
+    </div>
 
-                // Skip if href points to an HTML page
-                if (href && href.endsWith('.html')) return;
+    <div class="cmd" style="margin-top:18px"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/publications</span><span class="user">$</span> wc -l *.bib → 10 entries</div>
+  </div>
+</section>
 
-                // Only prevent default and scroll for anchor links
-                if (href && href.startsWith('#')) {
-                    e.preventDefault();
-                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-                    this.classList.add('active');
+<!-- ─────────── TEACHING ─────────── -->
+<section class="page" data-page="teaching" data-screen-label="04 Teaching">
+  <div class="main">
+    <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/teaching</span><span class="user">$</span> ls -la teaching/</div>
+    <h2 class="h1" style="font-size:42px;line-height:1;margin:14px 0 8px;color:var(--ink)">Teaching &amp; <span class="accent">supervision</span></h2>
+    <p class="lede">Tutorials and guest lectures at Monash University. Currently not accepting any new honours / masters projects / PhD students.</p>
 
-                    const target = document.querySelector(href);
-                    if (!target) return;
+    <div class="tbl" id="teachTable">
+      <div class="row head teach-cols">
+        <span>code</span><span>term</span><span>title &amp; notes</span><span>role</span><span></span>
+      </div>
+    </div>
 
-                    const headerOffset = 100;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    <!-- <div class="open-box">
+      <div class="label accent">// open</div>
+      <div class="serif" style="font-size:22px;line-height:1.25;color:var(--ink);margin-top:6px;font-weight:500">Honours &amp; masters supervision · 2026 intake</div>
+      <p style="font-size:13px;color:var(--ink-soft);margin:6px 0 10px;max-width:680px;line-height:1.55">Areas: AI + music, generative architecture, tool-making for creative practice, evaluation of non-deterministic systems.</p>
+      <div style="font-size:12px;color:var(--accent)">→ <a href="mailto:stephen.krol@monash.edu" style="color:inherit">email stephen.krol@monash.edu</a></div>
+    </div> -->
+  </div>
+</section>
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+<!-- ─────────── CONTACT ─────────── -->
+<section class="page" data-page="contact" data-screen-label="05 Contact">
+  <div class="contact-grid">
+    <div>
+      <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~/contact</span><span class="user">$</span> cat contact.txt</div>
+      <h2 class="h1" style="font-size:52px;line-height:1;margin:14px 0 0;color:var(--ink)">Get in <span class="accent">touch</span></h2>
+      <p class="lede" style="max-width:440px">Email is the fastest route. For informal conversations, drop by SensiLab — it helps to email first.</p>
+
+      <div class="email-box">
+        <div class="label accent">// primary</div>
+        <div class="email-big"><a href="mailto:stephen.krol@monash.edu" style="color:inherit">stephen.krol<span class="accent">@</span>monash.edu</a></div>
+        <div style="font-size:11px;color:var(--ink-fade);margin-top:6px">Replies within ~7 days</div>
+      </div>
+
+      <div style="margin-top:22px">
+        <div class="label">// visit</div>
+        <div class="serif" style="font-size:17px;color:var(--ink);margin-top:6px;line-height:1.35">SensiLab Building G, Monash University Caulfield Campus</div>
+        <div style="font-size:12px;color:var(--ink-soft);margin-top:2px">Hours: Tue–Fri · 10:00–18:00</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="label" style="margin-bottom:10px">// social.yaml</div>
+<pre class="yaml"><span class="k">scholar</span>:  <a href="https://scholar.google.com.au/citations?user=AyFhjxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" style="color:inherit"><span class="v">"Krol, S.J."</span></a>
+<span class="k">github</span>:   <a href="https://github.com/sjkrol" target="_blank" rel="noopener" style="color:inherit"><span class="v">"@sjkrol"</span></a>
+<span class="k">linkedin</span>: <a href="https://www.linkedin.com/in/stephen-james-krol/" target="_blank" rel="noopener" style="color:inherit"><span class="v">"stephen-james-krol"</span></a>
+<span class="k">city</span>:     <span class="v">"Melbourne, AU"</span>
+<span class="k">timezone</span>: <span class="v">"AEST (UTC+10)"</span></pre>
+
+      <div style="margin-top:22px">
+        <div class="label" style="margin-bottom:10px">// currently open to</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:13px;line-height:1.95;color:var(--ink-soft)">
+          <li><span class="accent">→</span> Research collaborations in ML + creative practice</li>
+          <li><span class="accent">→</span> Invited talks &amp; workshops</li>
+          <li><span class="accent">→</span> Studio &amp; residency conversations</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:22px;font-size:11px;color:var(--ink-fade)">
+        <div class="cmd"><span class="user">sjk@sensilab</span><span class="user">:</span><span class="path">~</span><span class="user">$</span> exit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/render.js"></script>
+<script src="js/tabs.js"></script>
 
 
-        // Update active nav on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-    <script src="./publications-data.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('recent-publications');
-            if (!container || !Array.isArray(publicationsData)) return;
-
-            const recentPublications = publicationsData.slice(0, 3);
-            container.innerHTML = '';
-
-            recentPublications.forEach(pub => {
-                const pubDiv = document.createElement('div');
-                pubDiv.className = 'publication';
-
-                const authors = Array.isArray(pub.authors) ? pub.authors.join(', ') : '';
-
-                pubDiv.innerHTML = `
-                    <h3><a href="${pub.url}" target="_blank">${pub.title}</a></h3>
-                    <p class="authors">${authors}</p>
-                    <p class="venue">${pub.venue}</p>
-                `;
-
-                container.appendChild(pubDiv);
-            });
-        });
-    </script>
-    <script src="./site.js"></script>
 </body>
 </html>
